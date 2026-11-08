@@ -133,26 +133,30 @@ function validateEmail() {
 }
 
 /**
- * Смарт-валідація поля "Телефон" із точними текстами помилок для різних Edge Cases
+ * Смарт-валідація поля "Телефон": нормалізація формату + точні тексти помилок
  */
 function validatePhone() {
   if (!phoneInput) return false;
-  
+
   let value = phoneInput.value.trim();
 
-  // 1. Авто-виправлення: якщо ввели з 0 (наприклад 0501234567), перетворюємо на +380501234567
+  // 1. Прибираємо пробіли, дужки, дефіси та крапки
+  value = value.replace(/[\s\-().]/g, '');
+
+  // 2. Приводимо до формату +380XXXXXXXXX
   if (/^0\d{9}$/.test(value)) {
-    value = '+38' + value;
+    value = '+38' + value;            // 0501234567   -> +380501234567
+  } else if (/^380\d{9}$/.test(value)) {
+    value = '+' + value;              // 380501234567 -> +380501234567
+  } else if (/^80\d{9}$/.test(value)) {
+    value = '+3' + value;             // 80501234567  -> +380501234567
+  }
+
+  if (value !== phoneInput.value) {
     phoneInput.value = value;
   }
 
-  // 2. Авто-очищення пробілів, дужок та дефісів
-  if (value.includes(' ') || value.includes('-') || value.includes('(') || value.includes(')')) {
-    value = value.replace(/[\s\-\(\)]/g, '');
-    phoneInput.value = value;
-  }
-
-  // 3. Точні деталізовані перевірки
+  // 3. Деталізовані перевірки
   if (value === '') {
     showError(phoneInput, phoneError, 'Введіть номер телефону');
     return false;
