@@ -360,36 +360,126 @@
     </section>
 
   </main>
-
-  <!-- ФУТЕР (ПОСИЛАННЯ ТА ІКОНКИ ПІДСВІЧУЮТЬСЯ ЯК НАВІГАЦІЯ) -->
-  <footer class="mt-auto bg-[#C0DFDB] border-t-2 border-[#32331E] px-4 md:px-8 py-6">
-    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left mb-4">
-      <img src="assets/icons/logo-footer.svg" alt="The Wes Anderson World" class="max-w-[200px] md:max-w-[220px] h-auto object-contain">
-      <p class="text-sm md:text-base max-w-[600px] leading-relaxed">
-        Незалежний простір для тих, хто помічає деталі. Збираємо кадри, історії та настрої світу Веса Андерсона.
+ 
+<!-- СЕКЦІЯ ФОРМИ ЗВОРОТНОГО ЗВ'ЯЗКУ (РЕАЛІЗАЦІЯ UI-СТАНІВ ТА РЕТРО-ДИЗАЙНУ) -->
+<section id="contact" class="w-full bg-[#FDFBF7] border-t-2 border-[#32331E] py-12 md:py-16 px-4 md:px-8" aria-labelledby="contact-title">
+  <div class="max-w-[700px] mx-auto bg-[#EDB9B9] border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover p-6 md:p-10 transition-all duration-200">
+    
+    <div class="text-center mb-6">
+      <h2 id="contact-title" class="font-heading text-3xl md:text-4xl font-extrabold text-[#32331E] mb-2 leading-tight">
+        Напишіть нам у клуб
+      </h2>
+      <p class="text-xs md:text-sm font-semibold text-[#32331E] leading-relaxed">
+        Маєте запитання, пропозицію чи бажаєте долучитися до обговорення світобудови Веса Андерсона? Залиште повідомлення!
       </p>
     </div>
 
-    <hr class="border-t-2 border-[#32331E] my-4">
+    <form id="feedbackForm" novalidate class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
+      <!-- Поле: Ім'я -->
+      <div class="flex flex-col">
+        <label for="username" class="mb-1 text-xs md:text-sm font-bold text-[#32331E]">Ваше ім'я *</label>
+        <input type="text" id="username" name="username" autocomplete="name" aria-describedby="nameError" class="w-full h-[46px] px-3.5 bg-white border-2 border-[#32331E] rounded-md shadow-retro text-sm font-semibold text-[#32331E] outline-none transition-all duration-150 hover:border-[#CFAA13] hover:bg-[#FFFDF9] focus:ring-2 focus:ring-[#CFAA13] focus-visible:ring-4 focus-visible:ring-[#CFAA13]" />
+        <p id="nameError" class="text-red-700 text-xs font-bold mt-1.5 hidden"></p>
+      </div>
 
-    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
-      <p>© 2026 The Wes Anderson World. Всі права захищено.</p>
+      <!-- Поле: Емейл -->
+      <div class="flex flex-col">
+        <label for="email" class="mb-1 text-xs md:text-sm font-bold text-[#32331E]">Електронна пошта *</label>
+        <input type="email" id="email" name="email" autocomplete="email" aria-describedby="emailError" class="w-full h-[46px] px-3.5 bg-white border-2 border-[#32331E] rounded-md shadow-retro text-sm font-semibold text-[#32331E] outline-none transition-all duration-150 hover:border-[#CFAA13] hover:bg-[#FFFDF9] focus:ring-2 focus:ring-[#CFAA13] focus-visible:ring-4 focus-visible:ring-[#CFAA13]" />
+        <p id="emailError" class="text-red-700 text-xs font-bold mt-1.5 hidden"></p>
+      </div>
 
-      <nav class="flex gap-4" aria-label="Правова інформація">
-        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Приватність</a>
-        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Умови</a>
-        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Cookies</a>
-      </nav>
+      <!-- Поле: Телефон (autocomplete="on" для збереження історії браузера) -->
+      <div class="flex flex-col md:col-span-2">
+        <label for="phone" class="mb-1 text-xs md:text-sm font-bold text-[#32331E]">Номер телефону (+380...) *</label>
+        <input type="tel" id="phone" name="phone" autocomplete="on" placeholder="+380XXXXXXXXX" aria-describedby="phoneError" class="w-full h-[46px] px-3.5 bg-white border-2 border-[#32331E] rounded-md shadow-retro text-sm font-semibold text-[#32331E] outline-none transition-all duration-150 hover:border-[#CFAA13] hover:bg-[#FFFDF9] focus:ring-2 focus:ring-[#CFAA13] focus-visible:ring-4 focus-visible:ring-[#CFAA13]" />
+        <p id="phoneError" class="text-red-700 text-xs font-bold mt-1.5 hidden"></p>
+      </div>
 
-      <nav class="flex gap-4" aria-label="Соціальні мережі">
-        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Facebook"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="LinkedIn"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-      </nav>
-    </div>
-  </footer>
+      <!-- Поле: Повідомлення -->
+      <div class="flex flex-col md:col-span-2">
+        <label for="message" class="mb-1 text-xs md:text-sm font-bold text-[#32331E]">Повідомлення *</label>
+        <textarea id="message" name="message" rows="4" aria-describedby="messageError" class="w-full p-3.5 bg-white border-2 border-[#32331E] rounded-md shadow-retro text-sm font-semibold text-[#32331E] outline-none transition-all duration-150 hover:border-[#CFAA13] hover:bg-[#FFFDF9] focus:ring-2 focus:ring-[#CFAA13] focus-visible:ring-4 focus-visible:ring-[#CFAA13] resize-y"></textarea>
+        <p id="messageError" class="text-red-700 text-xs font-bold mt-1.5 hidden"></p>
+      </div>
 
+      <!-- Чекбокс згоди -->
+      <div class="flex flex-col md:col-span-2 mt-1">
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" id="agreement" name="agreement" aria-describedby="agreementError" class="w-5 h-5 accent-[#32331E] border-2 border-[#32331E] rounded cursor-pointer shrink-0 focus-visible:ring-2 focus-visible:ring-[#CFAA13]" />
+          <span class="text-xs md:text-sm font-bold text-[#32331E]">Погоджуюся з політикою конфіденційності *</span>
+        </label>
+        <p id="agreementError" class="text-red-700 text-xs font-bold mt-1.5 hidden"></p>
+      </div>
+
+      <!-- Кнопка відправки -->
+      <div class="md:col-span-2 mt-3">
+        <button type="submit" class="w-full h-[50px] inline-flex items-center justify-center bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-base transition-all cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-[#32331E]">
+          Надіслати повідомлення
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- ФУТЕР -->
+<footer class="mt-auto bg-[#C0DFDB] border-t-2 border-[#32331E] px-4 md:px-8 py-6">
+  <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left mb-4">
+    <img src="assets/icons/logo-footer.svg" alt="The Wes Anderson World" class="max-w-[200px] md:max-w-[220px] h-auto object-contain">
+    <p class="text-sm md:text-base max-w-[600px] leading-relaxed">
+      Незалежний простір для тих, хто помічає деталі. Збираємо кадри, історії та настрої світу Веса Андерсона.
+    </p>
+  </div>
+
+  <hr class="border-t-2 border-[#32331E] my-4">
+
+  <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+    <p>© 2026 The Wes Anderson World. Всі права захищено.</p>
+
+    <nav class="flex gap-4" aria-label="Правова інформація">
+      <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Приватність</a>
+      <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Умови</a>
+      <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Cookies</a>
+    </nav>
+
+    <nav class="flex gap-4" aria-label="Соціальні мережі">
+      <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Facebook"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="LinkedIn"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Модальне вікно успіху (Імітація надсилання) -->
+<div 
+  id="successModal" 
+  class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalTitle"
+  aria-describedby="modalDescription"
+>
+  <div class="bg-[#EDB9B9] border-4 border-[#32331E] rounded-xl p-8 max-w-md w-full shadow-[6px_6px_0px_0px_#32331E] text-center transform transition-all">
+    <h3 id="modalTitle" class="text-2xl font-black text-[#32331E] mb-4 uppercase tracking-wider">
+      Дякуємо!
+    </h3>
+    <p id="modalDescription" class="text-[#32331E] mb-6 text-sm leading-relaxed">
+      Ваше повідомлення успішно надіслано (імітація надсилання). Ми зв'яжемося з вами найближчим часом.
+    </p>
+    <button 
+      id="closeModalBtn" 
+      type="button" 
+      class="w-full bg-[#CFAA13] text-[#32331E] font-bold py-3 px-6 rounded-lg border-2 border-[#32331E] shadow-[3px_3px_0px_0px_#32331E] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_#32331E] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#32331E] transition-all"
+    >
+      Закрити
+    </button>
+  </div>
+</div>
+
+<script src="assets/js/validation.js"></script>
 </body>
 </html>
