@@ -1,0 +1,53 @@
+/* ==========================================================================
+   THE WES ANDERSON WORLD — STYLES & LAB 7 INTERACTIONS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pattaya&display=swap');
+
+:root {
+  --font-heading: 'Pattaya', cursive;
+  --font-primary: 'Nunito', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: #FDFBF7;
+  color: #32331E;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Ретро-тіні */
+.shadow-retro {
+  box-shadow: 2px 2px 0px #32331E;
+}
+
+.shadow-retro-hover:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #32331E;
+}
+
+/* Логіка бургер-меню */
+#burger-toggle:checked ~ .main-nav {
+  max-height: 400px !important;
+  opacity: 1 !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* Активний варіант у Mood Quiz */
+.quiz-option-label {
+  transition: all 0.2s ease;
+}
+
+.quiz-option-label:has(input:checked) {
+  background-color: #EDB9B9 !important;
+  border-color: #32331E !important;
+}
+
+/* Зміна кольору SVG-зірочки на жовтий при наведенні */
+.group:hover .star-icon-yellow {
+  filter: invert(72%) sepia(85%) saturate(800%) hue-rotate(1deg) brightness(95%) contrast(88%);
+}

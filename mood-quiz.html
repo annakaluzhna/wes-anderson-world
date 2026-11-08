@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Знайди фільм Веса Андерсона, який відповідає твоєму настрою, за допомогою інтерактивного Mood Quiz.">
+  <title>Mood Quiz — The Wes Anderson World</title>
+  
+  <!-- Google Fonts: Pattaya + Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400..800;1,400..800&family=Pattaya&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- СТИЛІ ДЛЯ МЕНЮ ТА ЧИСТОГО CSS-ВИДІЛЕННЯ ОБРАНОЇ ПЛАШКИ -->
+  <style>
+    #burger-toggle:checked ~ .main-nav {
+      max-height: 400px !important;
+      opacity: 1 !important;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .quiz-option-label {
+      transition: all 0.2s ease-in-out;
+    }
+    .quiz-option-label:has(input:checked) {
+      background-color: #EDB9B9 !important;
+      border-color: #32331E !important;
+    }
+  </style>
+</head>
+<body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
+
+  <!-- ШАПКА САЙТУ -->
+  <header class="w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 relative z-50">
+    <a href="index.html" class="flex items-center gap-3 shrink-0 text-[#32331E]">
+      <img src="assets/icons/logo.svg" alt="The Wes Anderson World" class="w-[70px] md:w-[80px] h-[70px] md:h-[80px] object-contain">
+      <span class="hidden xl:inline text-base md:text-lg font-bold tracking-tight whitespace-nowrap">The Wes Anderson World</span>
+    </a>
+
+    <!-- ПРАВА ЧАСТИНА: ЗІРОЧКА ТА БУРГЕР -->
+    <div class="flex items-center gap-3 order-2 lg:order-3">
+      <a href="watchlist.html" class="group inline-flex items-center justify-center gap-1.0 w-[44px] md:w-[160px] h-[44px] md:h-[50px] bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-base transition-all shrink-0" aria-label="Watchlist">
+        <img src="assets/icons/icon-star.svg" class="w-[55px] h-[55px] object-contain transition-transform group-hover:scale-110 group-hover:rotate-12" alt="" aria-hidden="true">
+        <span class="hidden md:inline group-hover:text-[#32331E]">Watchlist</span>
+      </a>
+
+      <label for="burger-toggle" class="lg:hidden flex flex-col justify-around w-[44px] md:w-[52px] h-[44px] md:h-[52px] p-2.5 md:p-3 bg-white border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover cursor-pointer shrink-0 transition-all" aria-label="Відкрити меню">
+        <span class="w-full h-[2px] bg-[#32331E] rounded"></span>
+        <span class="w-full h-[2px] bg-[#32331E] rounded"></span>
+        <span class="w-full h-[2px] bg-[#32331E] rounded"></span>
+      </label>
+    </div>
+
+    <input type="checkbox" id="burger-toggle" class="burger-checkbox hidden">
+
+    <!-- ГОЛОВНЕ МЕНЮ -->
+    <nav class="main-nav order-4 lg:order-2 w-full lg:w-auto max-h-0 lg:max-h-none opacity-0 lg:opacity-100 overflow-hidden lg:overflow-visible transition-all duration-300 ease-in-out" aria-label="Головна навігація">
+      <ul class="flex flex-col lg:flex-row items-center lg:items-center justify-center gap-2 lg:gap-6 py-1 lg:py-0 w-full max-w-[260px] lg:max-w-none mx-auto">
+        <li class="w-full lg:w-auto border-b border-[#32331E]/30 lg:border-b-0 pb-1 lg:pb-0">
+          <a href="index.html" class="font-semibold text-base hover:text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center w-full px-2 lg:px-0">
+            <span>Головна</span>
+          </a>
+        </li>
+        <li class="w-full lg:w-auto border-b border-[#32331E]/30 lg:border-b-0 pb-1 lg:pb-0">
+          <a href="filmography.html" class="group font-semibold text-base hover:text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center gap-1.5 w-full px-2 lg:px-0 whitespace-nowrap">
+            <span>Фільмографія</span>
+            <img src="assets/icons/icon-ticket.svg" class="w-[50px] lg:w-[55px] h-[50px] lg:h-[55px] object-contain shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6" alt="" aria-hidden="true">
+          </a>
+        </li>
+        <li class="w-full lg:w-auto border-b border-[#32331E]/30 lg:border-b-0 pb-1 lg:pb-0">
+          <a href="biography.html" class="group font-semibold text-base hover:text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center gap-1.5 w-full px-2 lg:px-0 whitespace-nowrap">
+            <span>Біографія</span>
+            <img src="assets/icons/icon-book.svg" class="w-[50px] lg:w-[55px] h-[50px] lg:h-[55px] object-contain shrink-0 transition-transform group-hover:scale-110 group-hover:-rotate-6" alt="" aria-hidden="true">
+          </a>
+        </li>
+        <li class="w-full lg:w-auto pb-1 lg:pb-0">
+          <a href="mood-quiz.html" class="group font-semibold text-base text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center gap-1.5 w-full px-2 lg:px-0 whitespace-nowrap" aria-current="page">
+            <span>Mood Quiz</span>
+            <img src="assets/icons/icon-quiz.svg" class="w-[50px] lg:w-[55px] h-[50px] lg:h-[55px] object-contain shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6" alt="" aria-hidden="true">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- HERO СЕКЦІЯ КВІЗУ -->
+    <section class="w-full bg-[#EDB9B9] border-b-2 border-[#32331E] py-12 md:py-16 px-4 md:px-8 text-center" aria-labelledby="quiz-hero-title">
+      <div class="max-w-[800px] mx-auto">
+        <h1 id="quiz-hero-title" class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4">Знайди свій фільм за шість кроків</h1>
+        <p class="text-sm md:text-base lg:text-lg font-semibold leading-relaxed text-[#32331E]">
+          Кілька простих питань визначать стрічку, чия палітра і ритм відповідають твоєму настрою. Це займе менше хвилини.
+        </p>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ ВІДЖЕТА КВІЗУ -->
+    <section id="quiz-widget-section" class="w-full border-b-2 border-[#32331E]" aria-labelledby="quiz-widget-title">
+      <h2 id="quiz-widget-title" class="sr-only">Інтерактивний Mood Quiz</h2>
+
+      <form id="mood-quiz-form" action="#" method="post" class="w-full">
+        
+        <!-- КРОК 1 (АКТИВНИЙ) — РАМКА З ЕФЕКТОМ ПІДЙОМУ МОВ ПОРТРЕТ У БІОГРАФІЇ -->
+        <article class="quiz-step min-h-screen bg-[#C0DFDB] flex items-center justify-center p-4 md:p-8" id="step-1">
+          <div class="w-full max-w-[620px] bg-[#C0DFDB] border-2 border-[#32331E] rounded-lg shadow-retro p-6 md:p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-heading text-3xl md:text-4xl text-[#32331E]">Mood Quiz</span>
+              <img src="assets/icons/icon-quiz.svg" class="w-[60px] h-[60px] object-contain transition-transform hover:rotate-12" alt="" aria-hidden="true">
+            </div>
+
+            <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#32331E]/80 mb-3">
+              КРОК 1 ІЗ 6 • ОБЕРІТЬ ОДИН ВАРІАНТ
+            </div>
+
+            <!-- ПОВЗУНОК ПРОГРЕСУ -->
+            <div class="w-full bg-[#7F7F7F] h-2.5 rounded-full border border-[#32331E] mb-6 overflow-hidden">
+              <div class="bg-[#32331E] h-full w-[16.6%]"></div>
+            </div>
+
+            <fieldset class="border-none p-0 m-0 mb-6">
+              <legend class="font-heading text-2xl md:text-3xl text-[#32331E] mb-2">Який світ вам ближчий сьогодні?</legend>
+              <p class="text-xs md:text-sm text-[#32331E] mb-5">Оберіть одну рису, яка одразу привертає увагу.</p>
+
+              <div class="flex flex-col gap-3">
+                <label class="quiz-option-label flex items-center gap-3 bg-white border-2 border-[#32331E] rounded-md p-3 cursor-pointer shadow-retro text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-retro-hover">
+                  <input type="radio" name="question_1" value="symmetry" class="accent-[#32331E] w-4 h-4">
+                  <span>Симетрія</span>
+                </label>
+
+                <label class="quiz-option-label flex items-center gap-3 bg-white border-2 border-[#32331E] rounded-md p-3 cursor-pointer shadow-retro text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-retro-hover">
+                  <input type="radio" name="question_1" value="palette" class="accent-[#32331E] w-4 h-4">
+                  <span>Палітра</span>
+                </label>
+
+                <label class="quiz-option-label flex items-center gap-3 bg-white border-2 border-[#32331E] rounded-md p-3 cursor-pointer shadow-retro text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-retro-hover">
+                  <input type="radio" name="question_1" value="story-rhythm" checked class="accent-[#32331E] w-4 h-4">
+                  <span>Ритм історії</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <button type="button" class="btn-prev flex-1 h-[44px] bg-white text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro font-bold text-sm opacity-50 cursor-not-allowed" disabled>
+                Назад
+              </button>
+              <button type="button" class="btn-next flex-1 h-[44px] bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all cursor-pointer">
+                Далі
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] text-[#32331E]/80">
+              <span>Відповідь можна змінити перед продовженням.</span>
+              <span class="font-bold">1 / 6</span>
+            </div>
+          </div>
+        </article>
+
+      </form>
+    </section>
+
+    <!-- СЕКЦІЯ РЕЗУЛЬТАТІВ — З ЕФЕКТАМИ ПІДЙОМУ -->
+    <section id="quiz-results" class="max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16" aria-labelledby="results-title">
+      <div class="text-center mb-8 md:mb-12">
+        <h2 id="results-title" class="font-heading text-3xl md:text-5xl mb-3">Твої фільми знайдено</h2>
+        <p class="text-sm md:text-base leading-relaxed text-[#32331E] max-w-xl mx-auto">
+          Ці стрічки створені для твого настрою та погляду.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <article class="bg-[#EDB9B9] border-2 border-[#32331E] rounded-lg shadow-retro p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
+          <div>
+            <img src="assets/images/Moonrise Kingdom.2.jpg" alt="Постер фільму Королівство повного місяця" class="w-full h-[260px] md:h-[300px] object-cover rounded-md border-2 border-[#32331E] mb-6" loading="lazy">
+            <h3 class="font-heading text-3xl md:text-4xl text-[#32331E] mb-3">Королівство повного місяця</h3>
+            <p class="text-xs md:text-sm text-[#32331E] leading-relaxed mb-6">
+              Ексцентрична пригодницька казка про двох закоханих підлітків, які тікають від дорослого світу.
+            </p>
+          </div>
+          <a href="moonrise-kingdom.html" class="w-[180px] h-[42px] inline-flex items-center justify-center bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto">
+            Детальніше
+          </a>
+        </article>
+
+        <article class="bg-[#EDB9B9] border-2 border-[#32331E] rounded-lg shadow-retro p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
+          <div>
+            <img src="assets/images/The Grand Budapest Hotel.1.jpg" alt="Постер фільму Готель Гранд Будапешт" class="w-full h-[260px] md:h-[300px] object-cover rounded-md border-2 border-[#32331E] mb-6" loading="lazy">
+            <h3 class="font-heading text-3xl md:text-4xl text-[#32331E] mb-3">Готель «Гранд Будапешт»</h3>
+            <p class="text-xs md:text-sm text-[#32331E] leading-relaxed mb-6">
+              Вишукана комедія про консьєржа легендарного готелю та його молодого протеже.
+            </p>
+          </div>
+          <a href="grand-budapest.html" class="w-[180px] h-[42px] inline-flex items-center justify-center bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto">
+            Детальніше
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROMO СЕКЦІЯ — З ЕФЕКТАМИ ПІДЙОМУ -->
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 border-t-2 border-[#32331E]" aria-labelledby="promo-quiz-title">
+      <h2 id="promo-quiz-title" class="sr-only">Наступні кроки</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        <article class="bg-[#C0DFDB] border-2 border-[#32331E] rounded-lg shadow-retro p-8 flex flex-col items-center text-center justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
+          <img src="assets/icons/icon-ticket.svg" class="w-[55px] h-[55px] object-contain mb-4 transition-transform hover:rotate-12" alt="" aria-hidden="true">
+          <h3 class="font-heading text-2xl md:text-3xl mb-3">Твій вибір зроблено</h3>
+          <p class="text-xs md:text-sm text-[#32331E] mb-6 max-w-sm leading-relaxed">
+            Збережи стрічку у власний список або спробуй ще раз знайти інший настрій.
+          </p>
+          <a href="watchlist.html" class="w-[180px] h-[42px] inline-flex items-center justify-center bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto">
+            Перейти до обраного
+          </a>
+        </article>
+
+        <article class="bg-[#C0DFDB] border-2 border-[#32331E] rounded-lg shadow-retro p-8 flex flex-col items-center text-center justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
+          <img src="assets/icons/icon-quiz.svg" class="w-[55px] h-[55px] object-contain mb-4 transition-transform hover:-rotate-12" alt="" aria-hidden="true">
+          <h3 class="font-heading text-2xl md:text-3xl mb-3">Не твій фільм</h3>
+          <p class="text-xs md:text-sm text-[#32331E] mb-6 max-w-sm leading-relaxed">
+            Пройди квіз ще раз і відкрий іншу палітуру та історію для свого стану.
+          </p>
+          <a href="#quiz-widget-section" class="w-[180px] h-[42px] inline-flex items-center justify-center bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto">
+            Почати
+          </a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="mt-auto bg-[#C0DFDB] border-t-2 border-[#32331E] px-4 md:px-8 py-6">
+    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left mb-4">
+      <img src="assets/icons/logo-footer.svg" alt="The Wes Anderson World" class="max-w-[200px] md:max-w-[220px] h-auto object-contain">
+      <p class="text-sm md:text-base max-w-[600px] leading-relaxed">
+        Незалежний простір для тих, хто помічає деталі. Збираємо кадри, історії та настрої світу Веса Андерсона.
+      </p>
+    </div>
+
+    <hr class="border-t-2 border-[#32331E] my-4">
+
+    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+      <p>© 2026 The Wes Anderson World. Всі права захищено.</p>
+
+      <nav class="flex gap-4" aria-label="Правова інформація">
+        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Приватність</a>
+        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Умови</a>
+        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Cookies</a>
+      </nav>
+
+      <nav class="flex gap-4" aria-label="Соціальні мережі">
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Facebook"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="LinkedIn"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

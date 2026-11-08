@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Детальна сторінка фільму «Поїзд до Дарджилінга» (The Darjeeling Limited, 2007): історія створення, акторський склад, трейлер, кадри та колірна палітра.">
+  <title>Поїзд до Дарджилінга (2007) — The Wes Anderson World</title>
+  
+  <!-- Google Fonts: Pattaya + Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400..800;1,400..800&family=Pattaya&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- СТИЛІ ДЛЯ БУРГЕР-МЕНЮ ТА ТЕКСТОВОЇ ГАРМОШКИ -->
+  <style>
+    #burger-toggle:checked ~ .main-nav {
+      max-height: 400px !important;
+      opacity: 1 !important;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    /* Стилізація анімованої текстової гармошки (<details>) */
+    details.accordion-block summary {
+      list-style: none;
+    }
+    details.accordion-block summary::-webkit-details-marker {
+      display: none;
+    }
+    details.accordion-block[open] .accordion-arrow {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
+
+  <!-- ШАПКА САЙТУ -->
+  <header class="w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 relative z-50">
+    <a href="index.html" class="flex items-center gap-3 shrink-0 text-[#32331E]">
+      <img src="assets/icons/logo.svg" alt="The Wes Anderson World" class="w-[70px] md:w-[80px] h-[70px] md:h-[80px] object-contain">
+      <span class="hidden xl:inline text-base md:text-lg font-bold tracking-tight whitespace-nowrap">The Wes Anderson World</span>
+    </a>
+
+    <!-- ПРАВА ЧАСТИНА: ЗІРОЧКА ТА БУРГЕР -->
+    <div class="flex items-center gap-3 order-2 lg:order-3">
+      <a href="watchlist.html" class="group inline-flex items-center justify-center gap-1.0 w-[44px] md:w-[160px] h-[44px] md:h-[50px] bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-base transition-all shrink-0" aria-label="Watchlist">
+        <img src="assets/icons/icon-star.svg" class="w-[60px] h-[60px] object-contain transition-transform group-hover:scale-110 group-hover:rotate-12" alt="" aria-hidden="true">
+        <span class="hidden md:inline group-hover:text-[#32331E]">Watchlist</span>
+      </a>
+
+      <label for="burger-toggle" class="lg:hidden flex flex-col justify-around w-[44px] md:w-[52px] h-[44px] md:h-[52px] p-2.5 md:p-3 bg-white border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover cursor-pointer shrink-0 transition-all" aria-label="Відкрити меню">
+        <span class="w-full h-[2px] bg-[#32331E] rounded"></span>
+        <span class="w-full h-[2px] bg-[#32331E] rounded"></span>
+        <span class="w-full h-[2px] bg-[#32331E] rounded"></span>
+      </label>
+    </div>
+
+    <input type="checkbox" id="burger-toggle" class="burger-checkbox hidden">
+
+    <!-- ГОЛОВНЕ МЕНЮ -->
+    <nav class="main-nav order-4 lg:order-2 w-full lg:w-auto max-h-0 lg:max-h-none opacity-0 lg:opacity-100 overflow-hidden lg:overflow-visible transition-all duration-300 ease-in-out" aria-label="Головна навігація">
+      <ul class="flex flex-col lg:flex-row items-center lg:items-center justify-center gap-2 lg:gap-6 py-1 lg:py-0 w-full max-w-[260px] lg:max-w-none mx-auto">
+        <li class="w-full lg:w-auto border-b border-[#32331E]/30 lg:border-b-0 pb-1 lg:pb-0">
+          <a href="index.html" class="font-semibold text-base hover:text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center w-full px-2 lg:px-0">
+            <span>Головна</span>
+          </a>
+        </li>
+        <li class="w-full lg:w-auto border-b border-[#32331E]/30 lg:border-b-0 pb-1 lg:pb-0">
+          <a href="filmography.html" class="group font-semibold text-base hover:text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center gap-1.5 w-full px-2 lg:px-0 whitespace-nowrap">
+            <span>Фільмографія</span>
+            <img src="assets/icons/icon-ticket.svg" class="w-[50px] lg:w-[55px] h-[50px] lg:h-[55px] object-contain shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6" alt="" aria-hidden="true">
+          </a>
+        </li>
+        <li class="w-full lg:w-auto border-b border-[#32331E]/30 lg:border-b-0 pb-1 lg:pb-0">
+          <a href="biography.html" class="group font-semibold text-base hover:text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center gap-1.5 w-full px-2 lg:px-0 whitespace-nowrap">
+            <span>Біографія</span>
+            <img src="assets/icons/icon-book.svg" class="w-[50px] lg:w-[55px] h-[50px] lg:h-[55px] object-contain shrink-0 transition-transform group-hover:scale-110 group-hover:-rotate-6" alt="" aria-hidden="true">
+          </a>
+        </li>
+        <li class="w-full lg:w-auto pb-1 lg:pb-0">
+          <a href="mood-quiz.html" class="group font-semibold text-base hover:text-[#D45D28] transition-colors flex lg:inline-flex items-center justify-between lg:justify-center gap-1.5 w-full px-2 lg:px-0 whitespace-nowrap">
+            <span>Mood Quiz</span>
+            <img src="assets/icons/icon-quiz.svg" class="w-[50px] lg:w-[55px] h-[50px] lg:h-[55px] object-contain shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6" alt="" aria-hidden="true">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- HERO СЕКЦІЯ ФІЛЬМУ (HERO: #BFCFC4) -->
+    <section class="w-full bg-[#BFCFC4] border-b-2 border-[#32331E] py-8 md:py-12 px-4 md:px-8" aria-labelledby="movie-title">
+      <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        
+        <!-- ЛІВА ЧАСТИНА: ЗАГОЛОВОК, ТЕКСТ ТА ДІЇ -->
+        <div class="flex flex-col justify-center">
+          <h1 id="movie-title" class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#32331E] leading-tight mb-4">
+            Поїзд до Дарджилінга
+          </h1>
+          
+          <p class="text-sm md:text-base font-semibold text-[#32331E] leading-relaxed mb-8 text-justify">
+            Три американські брати, які не спілкувалися рік після смерті батька, вирушають у незабутню залізничну подорож Індією. Старший брат розробив суворий маршрут духовного відновлення, але купа сімейного багажу та старих образ швидко перетворює поїздку на суцільний хаос.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <!-- ТЕМНО-СИНЯ КНОПКА #112836 ДЛЯ ВИСОКОГО КОНТРАСТУ З ФОНОМ #BFCFC4 -->
+            <a href="#trailer-section" class="w-[160px] h-[44px] inline-flex items-center justify-center bg-[#112836] text-white hover:bg-[#8B3E16] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all">
+              Дивитись
+            </a>
+            <a href="#info-section-title" class="w-[160px] h-[44px] inline-flex items-center justify-center bg-white text-[#32331E] hover:bg-[#CA9722] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all">
+              Деталі
+            </a>
+          </div>
+        </div>
+
+        <!-- ПРАВА ЧАСТИНА: ПОСТЕР ФІЛЬМУ -->
+        <div class="flex justify-center lg:justify-end">
+          <img src="assets/images/The Darjeeling Limited.1.jpg" alt="Постер фільму Поїзд до Дарджилінга" class="w-full max-w-[480px] h-[380px] sm:h-[460px] object-cover rounded-lg border-2 border-[#32331E] shadow-retro hover:-translate-y-1.5 hover:shadow-retro-hover transition-all duration-300">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ ІСТОРІЇ ТА ДЕТАЛЕЙ -->
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16" aria-labelledby="info-section-title">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- ЛІВА КОЛОНКА (ПРЕВ'Ю ТА РУХОМА РАМКА З ФОТО) -->
+<div class="lg:col-span-5 flex flex-col gap-4 static lg:sticky lg:top-6">          <h2 id="info-section-title" class="font-heading text-3xl md:text-4xl text-[#32331E]">Історія та виробництво</h2>
+          <p class="text-xs md:text-sm text-[#32331E] leading-relaxed text-justify">
+            Барвиста духовна одіссея Веса Андерсона про зцілення родинних зв'язків через призму захоплюючих краєвидів та культури Індії.
+          </p>
+
+          <!-- РУХОМА РАМКА З ФОТО -->
+          <div class="group relative w-full overflow-hidden rounded-lg border-2 border-[#32331E] shadow-retro hover:-translate-y-2 hover:shadow-retro-hover transition-all duration-300 bg-white p-2">
+            <img src="assets/images/grand-budapest-keys.jpg" alt="Кадр зі знімального майданчика" loading="lazy" class="w-full h-auto rounded object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+        </div>
+
+        <!-- ПРАВА КОЛОНКА (ТЕКСТОВА ГАРМОШКА ДЛЯ ОПИСУ) -->
+        <div class="lg:col-span-7 flex flex-col gap-4">
+
+          <!-- БЛОК 1: ДЕТАЛЬНИЙ СЮЖЕТ (ГАРМОШКА) -->
+          <details open class="accordion-block bg-white border-2 border-[#32331E] rounded-lg shadow-retro hover:shadow-retro-hover transition-all duration-300 overflow-hidden">
+            <summary class="p-5 font-bold text-lg text-[#32331E] cursor-pointer flex items-center justify-between select-none">
+              <span>Детальний сюжет</span>
+              <span class="accordion-arrow text-xl transition-transform duration-300">▼</span>
+            </summary>
+            <div class="px-5 pb-5 text-xs md:text-sm text-[#32331E] leading-relaxed border-t border-[#32331E]/20 pt-4 text-justify">
+              <p class="mb-3">
+                Френсіс, Пітер та Джек Вайтмани сідають на поїзд «Darjeeling Limited», що прямує крізь Індію. Після серйозної аварії Френсіс намагається повернути єдність братам, шукаючи духовного очищення у храмах. Проте таємні наміри кожного з них та схильність до суперечок руйнують суворий план.
+              </p>
+              <p>
+                Висаджені з поїзда посеред пустелі за неналежну поведінку, брати опиняються віч-на-віч зі справжнім життям. Випадкова трагедія в місцевому селищі змушує їх переосмислити власну втрату та нарешті вирушити на зустріч зі своєю матір'ю, яка стала черницею у гірському монастирі.
+              </p>
+            </div>
+          </details>
+
+          <!-- БЛОК 2: ІСТОРІЯ ТА ВИРОБНИЦТВО (ГАРМОШКА) -->
+          <details class="accordion-block bg-white border-2 border-[#32331E] rounded-lg shadow-retro hover:shadow-retro-hover transition-all duration-300 overflow-hidden">
+            <summary class="p-5 font-bold text-lg text-[#32331E] cursor-pointer flex items-center justify-between select-none">
+              <span>Історія та виробництво</span>
+              <span class="accordion-arrow text-xl transition-transform duration-300">▼</span>
+            </summary>
+            <div class="px-5 pb-5 text-xs md:text-sm text-[#32331E] leading-relaxed border-t border-[#32331E]/20 pt-4 text-justify">
+              <p>
+                Сценарій написали Вес Андерсон, Роман Коппола та Джейсон Шварцман безпосередньо під час подорожі Індією. Більша частина зйомок проходила у справжньому рухомому поїзді, який кінематографісти повністю переобладнали та декорували вручну в унікальному стиль-дизайні Андерсона.
+              </p>
+            </div>
+          </details>
+
+          <!-- БЛОК 3: ОБЛИЧЧЯ ЦІЄЇ ІСТОРІЇ (ГАРМОШКА) -->
+          <details class="accordion-block bg-white border-2 border-[#32331E] rounded-lg shadow-retro hover:shadow-retro-hover transition-all duration-300 overflow-hidden">
+            <summary class="p-5 font-bold text-lg text-[#32331E] cursor-pointer flex items-center justify-between select-none">
+              <span>Обличчя цієї історії</span>
+              <span class="accordion-arrow text-xl transition-transform duration-300">▼</span>
+            </summary>
+            <div class="px-5 pb-5 text-xs md:text-sm text-[#32331E] leading-relaxed border-t border-[#32331E]/20 pt-4 text-justify">
+              <p>
+                Трьох братів чудово втілили Оуен Уілсон (Френсіс), Едрієн Броуді (Пітер) та Джейсон Шварцман (Джек). У стрічці також з'явилися Анжеліка Г'юстон у ролі їхньої матері, Аміт Чаббра, Ірфан Хан, а також Наталі Портман та Білл Мюррей у яскравих камео.
+              </p>
+            </div>
+          </details>
+
+          <!-- БЛОК 4: ПАМ'ЯТЬ, ЗАХОВАНА У КОЛЬОРІ (ГАРМОШКА) -->
+          <details class="accordion-block bg-white border-2 border-[#32331E] rounded-lg shadow-retro hover:shadow-retro-hover transition-all duration-300 overflow-hidden">
+            <summary class="p-5 font-bold text-lg text-[#32331E] cursor-pointer flex items-center justify-between select-none">
+              <span>Пам'ять, захована у кольорі</span>
+              <span class="accordion-arrow text-xl transition-transform duration-300">▼</span>
+            </summary>
+            <div class="px-5 pb-5 text-xs md:text-sm text-[#32331E] leading-relaxed border-t border-[#32331E]/20 pt-4 text-justify">
+              <p>
+                Бірюзово-блакитні інтер'єри купе, шафраново-жовті відтінки східних базарів, теракотові костюми та розкішні валізи Louis Vuitton, розписованi вручну птахами і тваринами. Скидання цих валіз наприкінці фільму стає ключовим візуальним символом звільнення від тягаря минулого.
+              </p>
+            </div>
+          </details>
+
+          <!-- ЦИТАТА -->
+          <blockquote class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro p-6 text-justify hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+            <h3 class="font-bold text-lg text-[#32331E] mb-2">Цитата з діалогу</h3>
+            <p class="text-xs md:text-sm italic text-[#32331E] leading-relaxed mb-2 text-justify">
+              «Я хочу, щоб ми стали братами, як колись. Я хочу сказати "так" усьому, що трапиться у цій подорожі.»
+            </p>
+            <cite class="text-xs font-bold not-italic text-[#32331E] block text-justify">
+              — Френсіс Вайтман, «Поїзд до Дарджилінга»
+            </cite>
+          </blockquote>
+
+          <!-- ТАБЛИЦЯ ХАРАКТЕРИСТИК -->
+          <div class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro overflow-hidden hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+            <table class="w-full text-xs md:text-sm text-left">
+              <tbody>
+                <tr class="border-b border-[#32331E]/20">
+                  <th scope="row" class="py-3 px-4 font-bold text-[#32331E] bg-[#FDFBF7]/50 w-1/3">Рік</th>
+                  <td class="py-3 px-4 text-[#32331E]">2007</td>
+                </tr>
+                <tr class="border-b border-[#32331E]/20">
+                  <th scope="row" class="py-3 px-4 font-bold text-[#32331E] bg-[#FDFBF7]/50">Жанр</th>
+                  <td class="py-3 px-4 text-[#32331E]">Пригоди / Комедія / Драма</td>
+                </tr>
+                <tr class="border-b border-[#32331E]/20">
+                  <th scope="row" class="py-3 px-4 font-bold text-[#32331E] bg-[#FDFBF7]/50">Хронометраж</th>
+                  <td class="py-3 px-4 text-[#32331E]">91 хв</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="py-3 px-4 font-bold text-[#32331E] bg-[#FDFBF7]/50">Мова</th>
+                  <td class="py-3 px-4 text-[#32331E]">Англійська / Гінді / Німецька</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ ВІДЕО ТРЕЙЛЕРА -->
+    <section id="trailer-section" class="max-w-[1200px] mx-auto px-4 md:px-8 pb-12 md:pb-16" aria-labelledby="trailer-title">
+      <h2 id="trailer-title" class="sr-only">Офіційний трейлер</h2>
+      <div class="relative w-full aspect-video rounded-lg border-2 border-[#32331E] shadow-retro overflow-hidden bg-black hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+        <iframe src="https://www.youtube.com/embed/B2R7O2IlndM" title="Офіційний трейлер Поїзд до Дарджилінга" class="w-full h-full border-none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ КАДРІВ -->
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 border-t-2 border-[#32331E]" aria-labelledby="stills-title">
+      <div class="text-center mb-6">
+        <h2 id="stills-title" class="font-heading text-3xl md:text-5xl mb-2">Кадри фільму</h2>
+        <p class="text-xs md:text-sm text-[#32331E]">
+          Екзотичний колорит, тепло східного сонця та багаж родинних таємниць
+        </p>
+      </div>
+
+      <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 pb-6 scrollbar-none">
+        <figure class="snap-center shrink-0 w-[85%] md:w-[70%] lg:w-[60%] bg-white border-2 border-[#32331E] rounded-lg shadow-retro p-2 hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+          <img src="assets/images/The Darjeeling Limited.2.jpg" alt="Кадр з фільму Поїзд до Дарджилінга 1" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+        </figure>
+
+        <figure class="snap-center shrink-0 w-[85%] md:w-[70%] lg:w-[60%] bg-white border-2 border-[#32331E] rounded-lg shadow-retro p-2 hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+          <img src="assets/images/The Darjeeling Limited.3.jpg" alt="Кадр з фільму Поїзд до Дарджилінга 2" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+        </figure>
+
+        <figure class="snap-center shrink-0 w-[85%] md:w-[70%] lg:w-[60%] bg-white border-2 border-[#32331E] rounded-lg shadow-retro p-2 hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+          <img src="assets/images/The Darjeeling Limited.4.jpg" alt="Кадр з фільму Поїзд до Дарджилінга 3" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+        </figure>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ ПАЛІТРИ (УСІ 10 КОЛЬОРІВ ДЛЯ "ПОЇЗД ДО ДАРДЖИЛІНГА") -->
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 border-t-2 border-[#32331E]" aria-labelledby="palette-title">
+      <div class="text-center mb-8">
+        <h2 id="palette-title" class="font-heading text-3xl md:text-4xl mb-2">Кольори, що творять картину</h2>
+        <p class="text-xs md:text-sm text-[#32331E]">
+          Повна палітра з 10 відтінків. Натисніть на плашку, щоб скопіювати HEX-код
+        </p>
+      </div>
+
+      <!-- ГРІД З 10 КОЛЬОРІВ -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-[1000px] mx-auto">
+        
+        <button type="button" onclick="navigator.clipboard.writeText('#BFCFC4')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#BFCFC4] shrink-0"></span>
+          <span class="truncate">#BFCFC4</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#112836')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#112836] shrink-0"></span>
+          <span class="truncate">#112836</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#BABFB8')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#BABFB8] shrink-0"></span>
+          <span class="truncate">#BABFB8</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#454547')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#454547] shrink-0"></span>
+          <span class="truncate">#454547</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#8B3E16')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#8B3E16] shrink-0"></span>
+          <span class="truncate">#8B3E16</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#712413')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#712413] shrink-0"></span>
+          <span class="truncate">#712413</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#CA9722')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#CA9722] shrink-0"></span>
+          <span class="truncate">#CA9722</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#5E2C02')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#5E2C02] shrink-0"></span>
+          <span class="truncate">#5E2C02</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#217960')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#217960] shrink-0"></span>
+          <span class="truncate">#217960</span>
+        </button>
+
+        <button type="button" onclick="navigator.clipboard.writeText('#3B5459')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+          <span class="w-6 h-6 rounded border border-[#32331E] bg-[#3B5459] shrink-0"></span>
+          <span class="truncate">#3B5459</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- PROMO СЕКЦІЯ (КОЛІР КАРТОК: #BABFB8) -->
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 border-t-2 border-[#32331E]" aria-labelledby="promo-title">
+      <h2 id="promo-title" class="sr-only">Рекомендації</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        <article class="bg-[#BABFB8] border-2 border-[#32331E] rounded-lg shadow-retro p-8 flex flex-col items-center text-center justify-between hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+          <img src="assets/icons/icon-ticket.svg" class="w-[55px] h-[55px] object-contain mb-4" alt="" aria-hidden="true">
+          <h3 class="font-heading text-2xl md:text-3xl mb-3 text-center">Збережіть цей шедевр</h3>
+          <p class="text-xs md:text-sm text-[#32331E] mb-6 max-w-sm leading-relaxed text-center">
+            Додайте фільм до особистого списку або знайдіть наступну історію під свій настрій.
+          </p>
+          <!-- Кнопка насиченого теракотового кольору #8B3E16 з білим текстом для чіткої виділяємості на фоні #BABFB8 -->
+          <button type="button" class="w-[160px] h-[42px] inline-flex items-center justify-center bg-[#8B3E16] text-white hover:bg-[#112836] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto">
+            Додати
+          </button>
+        </article>
+
+        <article class="bg-[#BABFB8] border-2 border-[#32331E] rounded-lg shadow-retro p-8 flex flex-col items-center text-center justify-between hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+          <img src="assets/icons/icon-quiz.svg" class="w-[55px] h-[55px] object-contain mb-4" alt="" aria-hidden="true">
+          <h3 class="font-heading text-2xl md:text-3xl mb-3 text-center">Не знаєте що дивитися?</h3>
+          <p class="text-xs md:text-sm text-[#32331E] mb-6 max-w-sm leading-relaxed text-center">
+            Пройдіть короткий квіз і ми підберемо стрічку, яка ідеально пасуватиме вашому стану.
+          </p>
+          <a href="mood-quiz.html" class="w-[160px] h-[42px] inline-flex items-center justify-center bg-[#8B3E16] text-white hover:bg-[#112836] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto">
+            Квіз
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ СХОЖИХ ФІЛЬМІВ (ВОДНЕ ЖИТТЯ ТА ПЛЯШКОВА РАКЕТА) -->
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16 border-t-2 border-[#32331E]" aria-labelledby="similar-title">
+      <div class="text-center mb-8 md:mb-12">
+        <h2 id="similar-title" class="font-heading text-3xl md:text-5xl mb-3">Інші історії у кольорі</h2>
+        <p class="text-sm md:text-base leading-relaxed text-[#32331E] max-w-xl mx-auto">
+          Фільми про незабутні спільні мандрівки, чоловічу дружбу та родинні пошуки
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch justify-center max-w-[850px] mx-auto">
+        
+        <!-- КАРТКА 1: ВОДНЕ ЖИТТЯ СТІВА ЗІССУ (2004) -->
+        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transform hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+          <div class="relative w-full">
+<img src="assets/images/life-aquatic.jpg" alt="Ілюстрація Водне життя" class="w-full h-[380px] object-cover object-[center_17%]" loading="lazy">
+            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" aria-label="Кольорова палітра фільму">
+              <button type="button" class="flex-1 h-full bg-[#F2DB40] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+              <button type="button" class="flex-1 h-full bg-[#D31915] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+              <button type="button" class="flex-1 h-full bg-[#A5D3E3] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+              <button type="button" class="flex-1 h-full bg-[#1675AC] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+              <button type="button" class="flex-1 h-full bg-[#DFB78E] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+            </div>
+          </div>
+
+          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+            ПРИГОДИ / КОМЕДІЯ
+          </span>
+
+          <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
+            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Водне життя Стіва Зіссу</h3>
+            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Динамічна експедиція химерної команди у пошуках таємничої акули-ягуара.</p>
+            
+            <div class="h-[28px] flex items-center justify-center mb-1">
+              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2004 • 118 хв</span>
+            </div>
+
+            <div class="h-[60px] flex items-center justify-center my-1">
+              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0" aria-label="Додати Водне життя Стіва Зіссу до Watchlist">
+                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+              </button>
+            </div>
+
+            <a href="life-aquatic.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+              Переглянути
+            </a>
+          </div>
+        </article>
+
+        <!-- КАРТКА 2: ПЛЯШКОВА РАКЕТА (1996) -->
+        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transform hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
+          <div class="relative w-full">
+<img src="assets/images/bottle-rocket.jpg" alt="Ілюстрація Пляшкова ракета" class="w-full h-[380px] object-cover object-[center_30%]" loading="lazy">            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" aria-label="Кольорова палітра фільму">
+              <button type="button" class="flex-1 h-full bg-[#F2C849] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+              <button type="button" class="flex-1 h-full bg-[#9C1E14] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+              <button type="button" class="flex-1 h-full bg-[#DEE0DB] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+              <button type="button" class="flex-1 h-full bg-[#91A1A8] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+              <button type="button" class="flex-1 h-full bg-[#457C6B] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+            </div>
+          </div>
+
+          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+            КОМЕДІЯ / КРИМІНАЛ
+          </span>
+
+          <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
+            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Пляшкова ракета</h3>
+            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Історія трьох друзів-диваків із Техасу, які планують кумедні злочини.</p>
+            
+            <div class="h-[28px] flex items-center justify-center mb-1">
+              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">1996 • 91 хв</span>
+            </div>
+
+            <div class="h-[60px] flex items-center justify-center my-1">
+              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0" aria-label="Додати Пляшкова ракета до Watchlist">
+                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+              </button>
+            </div>
+
+            <a href="bottle-rocket.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+              Переглянути
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ФУТЕР (ФУТЕР: #CA9722) -->
+  <footer class="mt-auto bg-[#CA9722] border-t-2 border-[#32331E] px-4 md:px-8 py-6">
+    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left mb-4">
+      <img src="assets/icons/logo-footer.svg" alt="The Wes Anderson World" class="max-w-[200px] md:max-w-[220px] h-auto object-contain">
+      <p class="text-sm md:text-base max-w-[600px] leading-relaxed text-center md:text-left">
+        Незалежний простір для тих, хто помічає деталі. Збираємо кадри, історії та настрої світу Веса Андерсона.
+      </p>
+    </div>
+
+    <hr class="border-t-2 border-[#32331E] my-4">
+
+    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+      <p>© 2026 The Wes Anderson World. Всі права захищено.</p>
+
+      <nav class="flex gap-4" aria-label="Правова інформація">
+        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Приватність</a>
+        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Умови</a>
+        <a href="#" class="hover:underline hover:text-[#D45D28] transition-colors">Cookies</a>
+      </nav>
+
+      <nav class="flex gap-4" aria-label="Соціальні мережі">
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Facebook"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="X (Twitter)"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="LinkedIn"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="hover:text-[#D45D28] transition-colors" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
