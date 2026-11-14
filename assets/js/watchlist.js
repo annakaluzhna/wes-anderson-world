@@ -282,11 +282,29 @@
     });
   }
 
+  const badge = document.querySelector('[data-watchlist-badge]');
+  let previousCount;
+  let badgeAnimation;
+
+  function updateBadge(size) {
+    if (!badge || size === previousCount) return;
+    badge.textContent = String(size);
+    badge.hidden = size === 0;
+    badge.closest('a')?.setAttribute('aria-label', 'Watchlist, збережених фільмів: ' + size);
+    badgeAnimation?.cancel();
+    if (size && previousCount !== undefined && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      badgeAnimation = badge.animate?.([{ transform: 'scale(1)' }, { transform: 'scale(1.22)' }, { transform: 'scale(1)' }],
+        { duration: 260, easing: 'ease-out' });
+    }
+    previousCount = size;
+  }
+
   function render() {
     const saved = read(savedKey);
     const watched = read(watchedKey);
     const films = new Set([...saved, ...watched]);
     updateButtons(saved);
+    updateBadge(saved.size);
     if (!grid || !template?.content || !count || !empty) return;
     count.textContent = String(saved.size);
     const counts = count.closest('[data-watchlist-counts]');

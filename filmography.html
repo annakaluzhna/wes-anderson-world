@@ -32,6 +32,7 @@
   <script src="assets/js/watchlist.js" defer></script>
   <script src="assets/js/filmography.js" defer></script>
   <script src="assets/js/palette-copy.js" defer></script>
+  <script src="assets/js/site-motion.js" defer></script>
 </head>
 <body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
 
@@ -46,9 +47,10 @@
 
     <!-- ПРАВА ЧАСТИНА: ЗІРОЧКА ТА БУРГЕР -->
     <div class="flex items-center gap-3 order-2 lg:order-3">
-      <a href="watchlist.html" class="group inline-flex items-center justify-center gap-1.0 w-[44px] md:w-[160px] h-[44px] md:h-[50px] bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-base transition-all shrink-0" aria-label="Watchlist">
+      <a href="watchlist.html" class="relative group inline-flex items-center justify-center gap-1.0 w-[44px] md:w-[160px] h-[44px] md:h-[50px] bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-base transition-all shrink-0" aria-label="Watchlist">
         <img src="assets/icons/icon-star.svg" class="w-[55px] h-[55px] object-contain transition-transform group-hover:scale-110 group-hover:rotate-12" alt="" aria-hidden="true">
         <span class="hidden md:inline group-hover:text-[#32331E]">Watchlist</span>
+        <span data-watchlist-badge class="watchlist-badge" aria-hidden="true" hidden></span>
       </a>
 
       <label for="burger-toggle" class="lg:hidden flex flex-col justify-around w-[44px] md:w-[52px] h-[44px] md:h-[52px] p-2.5 md:p-3 bg-white border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover cursor-pointer shrink-0 transition-all" aria-label="Відкрити меню">
