@@ -328,10 +328,13 @@ if (form) {
     if (submitButton) submitButton.disabled = true;
     form.setAttribute('aria-busy', 'true');
     try {
+      const formData = new FormData(form);
+      formData.set('form-name', 'club-contact');
+      const encodedBody = new URLSearchParams(formData).toString();
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
+        body: encodedBody
       });
       if (!response.ok) throw new Error('Feedback submission failed');
       resetFormState();
