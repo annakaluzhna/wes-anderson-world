@@ -19,6 +19,24 @@ body {
   font-family: var(--font-heading);
 }
 
+/* Вага заголовків */
+:is(h1, h2, h3, h4, h5, h6).font-black {
+  font-weight: 800;
+}
+
+:is(h1, h2, h3, h4, h5, h6).font-extrabold {
+  font-weight: 700;
+}
+
+:is(h1, h2, h3, h4, h5, h6).font-bold {
+  font-weight: 600;
+}
+
+/* Pattaya має одну вагу. Використовуємо її без штучного потовщення. */
+:is(h1, h2, h3, h4, h5, h6).font-heading {
+  font-synthesis-weight: none;
+}
+
 /* Ретро-тіні */
 .shadow-retro {
   box-shadow: 2px 2px 0px #32331E;

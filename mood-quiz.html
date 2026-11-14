@@ -32,6 +32,7 @@
       border-color: #32331E !important;
     }
   </style>
+  <script src="assets/js/mood-quiz.js" defer></script>
 </head>
 <body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
 
@@ -101,7 +102,7 @@
     </section>
 
     <!-- СЕКЦІЯ ВІДЖЕТА КВІЗУ -->
-    <section id="quiz-widget-section" class="w-full border-b-2 border-[#32331E]" aria-labelledby="quiz-widget-title">
+    <section id="quiz-widget-section" data-hide-header-early class="w-full border-b-2 border-[#32331E]" aria-labelledby="quiz-widget-title">
       <h2 id="quiz-widget-title" class="sr-only">Інтерактивний Mood Quiz</h2>
 
       <form id="mood-quiz-form" action="#" method="post" class="w-full">
@@ -115,48 +116,49 @@
             </div>
 
             <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#32331E]/80 mb-3">
-              КРОК 1 ІЗ 6 • ОБЕРІТЬ ОДИН ВАРІАНТ
+              <span data-quiz-step>КРОК 1 ІЗ 6 • ОБЕРІТЬ ОДИН ВАРІАНТ</span>
             </div>
 
             <!-- ПОВЗУНОК ПРОГРЕСУ -->
-            <div class="w-full bg-[#7F7F7F] h-2.5 rounded-full border border-[#32331E] mb-6 overflow-hidden">
-              <div class="bg-[#32331E] h-full w-[16.6%]"></div>
+            <div class="w-full bg-[#7F7F7F] h-2.5 rounded-full border border-[#32331E] mb-6 overflow-hidden" role="progressbar" aria-label="Прогрес тесту" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1">
+              <div class="bg-[#32331E] h-full transition-[width]" style="width: 16.67%"></div>
             </div>
 
-            <fieldset class="border-none p-0 m-0 mb-6">
-              <legend class="font-heading text-2xl md:text-3xl text-[#32331E] mb-2">Який світ вам ближчий сьогодні?</legend>
-              <p class="text-xs md:text-sm text-[#32331E] mb-5">Оберіть одну рису, яка одразу привертає увагу.</p>
+            <fieldset class="border-none p-0 m-0 mb-6" aria-describedby="quiz-error">
+              <legend tabindex="-1" class="font-heading text-2xl md:text-3xl text-[#32331E] mb-2">З якої сцени починається твій фільм?</legend>
+              <p class="text-xs md:text-sm text-[#32331E] mb-5">Обери варіант, який найбільше відповідає твоєму настрою.</p>
 
               <div class="flex flex-col gap-3">
                 <label class="quiz-option-label flex items-center gap-3 bg-white border-2 border-[#32331E] rounded-md p-3 cursor-pointer shadow-retro text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-retro-hover">
-                  <input type="radio" name="question_1" value="symmetry" class="accent-[#32331E] w-4 h-4">
-                  <span>Симетрія</span>
+                  <input type="radio" name="quiz-answer" value="0" class="accent-[#32331E] w-4 h-4">
+                  <span></span>
                 </label>
 
                 <label class="quiz-option-label flex items-center gap-3 bg-white border-2 border-[#32331E] rounded-md p-3 cursor-pointer shadow-retro text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-retro-hover">
-                  <input type="radio" name="question_1" value="palette" class="accent-[#32331E] w-4 h-4">
-                  <span>Палітра</span>
+                  <input type="radio" name="quiz-answer" value="1" class="accent-[#32331E] w-4 h-4">
+                  <span></span>
                 </label>
 
                 <label class="quiz-option-label flex items-center gap-3 bg-white border-2 border-[#32331E] rounded-md p-3 cursor-pointer shadow-retro text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-retro-hover">
-                  <input type="radio" name="question_1" value="story-rhythm" checked class="accent-[#32331E] w-4 h-4">
-                  <span>Ритм історії</span>
+                  <input type="radio" name="quiz-answer" value="2" class="accent-[#32331E] w-4 h-4">
+                  <span></span>
                 </label>
               </div>
+              <p id="quiz-error" role="alert" class="text-sm font-bold text-red-800 mt-3" hidden></p>
             </fieldset>
 
             <div class="flex items-center justify-between gap-4 mb-4">
-              <button type="button" class="btn-prev flex-1 h-[44px] bg-white text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro font-bold text-sm opacity-50 cursor-not-allowed" disabled>
+              <button type="button" class="btn-prev flex-1 h-[44px] bg-white text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro font-bold text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                 Назад
               </button>
-              <button type="button" class="btn-next flex-1 h-[44px] bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all cursor-pointer">
+              <button type="submit" class="btn-next flex-1 h-[44px] bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all cursor-pointer">
                 Далі
               </button>
             </div>
 
             <div class="flex items-center justify-between text-[11px] text-[#32331E]/80">
               <span>Відповідь можна змінити перед продовженням.</span>
-              <span class="font-bold">1 / 6</span>
+              <span class="font-bold" data-quiz-count>1 / 6</span>
             </div>
           </div>
         </article>
@@ -165,9 +167,9 @@
     </section>
 
     <!-- СЕКЦІЯ РЕЗУЛЬТАТІВ — З ЕФЕКТАМИ ПІДЙОМУ -->
-    <section id="quiz-results" class="max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16" aria-labelledby="results-title">
+    <section id="quiz-results" hidden class="max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16" aria-labelledby="results-title">
       <div class="text-center mb-8 md:mb-12">
-        <h2 id="results-title" class="font-heading text-3xl md:text-5xl mb-3">Твої фільми знайдено</h2>
+        <h2 id="results-title" tabindex="-1" class="font-heading text-3xl md:text-5xl mb-3">Твої фільми знайдено</h2>
         <p class="text-sm md:text-base leading-relaxed text-[#32331E] max-w-xl mx-auto">
           Ці стрічки створені для твого настрою та погляду.
         </p>
@@ -203,7 +205,7 @@
     </section>
 
     <!-- PROMO СЕКЦІЯ — З ЕФЕКТАМИ ПІДЙОМУ -->
-    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 border-t-2 border-[#32331E]" aria-labelledby="promo-quiz-title">
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 border-t-2 border-[#32331E]" aria-labelledby="promo-quiz-title" hidden>
       <h2 id="promo-quiz-title" class="sr-only">Наступні кроки</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
         <article class="bg-[#C0DFDB] border-2 border-[#32331E] rounded-lg shadow-retro p-8 flex flex-col items-center text-center justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
