@@ -252,8 +252,10 @@
       toast = document.createElement('div');
       toast.setAttribute('role', 'status');
       toast.className = 'fixed bottom-4 right-4 max-w-[calc(100%-2rem)] sm:max-w-sm z-[70] bg-[#C0DFDB] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro p-3 text-sm font-bold pointer-events-none';
-      document.body.append(toast);
+
     }
+    const container = document.querySelector('#legal-dialog[open]') ?? document.body;
+    if (toast.parentElement !== container) container.append(toast);
     clearTimeout(toastTimer);
     toast.hidden = false;
     toast.textContent = message;
@@ -278,7 +280,7 @@
       const active = films.has(id);
       button.setAttribute('aria-pressed', String(active));
       button.setAttribute('aria-label', (active ? 'Видалити з Watchlist: ' : 'Додати до Watchlist: ') + catalog[id].title);
-      label.textContent = active ? 'У Watchlist' : label.dataset.watchlistLabel;
+      label.textContent = active ? (label.dataset.watchlistRemoveLabel ?? 'У Watchlist') : label.dataset.watchlistLabel;
     });
   }
 
@@ -304,6 +306,10 @@
     const watched = read(watchedKey);
     const films = new Set([...saved, ...watched]);
     updateButtons(saved);
+    document.querySelectorAll('button[data-watched]').forEach(button => {
+      const id = button.dataset.watched;
+      if (Object.hasOwn(catalog, id)) button.setAttribute('aria-pressed', String(watched.has(id)));
+    });
     updateBadge(saved.size);
     if (!grid || !template?.content || !count || !empty) return;
     count.textContent = String(saved.size);
@@ -352,7 +358,7 @@
     const button = event.target.closest?.('button[data-watchlist-id], button[data-watched], button[data-remove]');
     if (!button) return;
     const card = button.closest('[data-saved-film]');
-    const id = button.dataset.watchlistId ?? card?.dataset.savedFilm;
+    const id = button.dataset.watchlistId ?? (button.dataset.watched || card?.dataset.savedFilm);
     if (!Object.hasOwn(catalog, id)) return;
     const isWatchedButton = button.hasAttribute('data-watched');
     const key = isWatchedButton ? watchedKey : savedKey;
@@ -380,6 +386,20 @@
     render();
   });
 
+  document.querySelector('[data-clear-watchlist]')?.addEventListener('click', () => {
+    if (!window.confirm('Очистити списки збережених і переглянутих фільмів?')) return;
+    try {
+      localStorage.removeItem('wes-anderson-watchlist');
+      localStorage.removeItem(savedKey);
+      localStorage.removeItem(watchedKey);
+      render();
+      notify('Збережені дані очищено.');
+    } catch {
+      notify('Не вдалося очистити збережені дані.');
+    }
+  });
+
+  document.addEventListener('watchlist:refresh', render);
   window.addEventListener('storage', event => {
     if (event.key === savedKey || event.key === watchedKey || event.key === null) render();
   });
