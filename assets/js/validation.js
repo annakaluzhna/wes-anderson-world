@@ -296,8 +296,14 @@ function closeModal() {
 // 8. ОБРОБКА ПОДІЇ ВІДПРАВКИ ФОРМИ (SUBMIT)
 // ==========================================
 if (form) {
-  form.addEventListener('submit', function (event) {
+  const submitButton = form.querySelector('button[type="submit"]');
+  const submitError = document.getElementById('feedbackSubmitError');
+  let sending = false;
+
+  form.addEventListener('submit', async function (event) {
     event.preventDefault();
+    if (sending) return;
+    if (submitError) submitError.hidden = true;
 
     Object.keys(touched).forEach(key => touched[key] = true);
 
@@ -307,11 +313,38 @@ if (form) {
     const isMessageValid = validateMessage();
     const isAgreementValid = validateAgreement();
 
-    if (isNameValid && isEmailValid && isPhoneValid && isMessageValid && isAgreementValid) {
-      openModal();
+    if (!(isNameValid && isEmailValid && isPhoneValid && isMessageValid && isAgreementValid)) return;
+
+    const { hostname, protocol } = window.location;
+    if (protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]'].includes(hostname)) {
+      if (submitError) {
+        submitError.textContent = 'Надсилання доступне на опублікованому сайті.';
+        submitError.hidden = false;
+      }
+      return;
+    }
+
+    sending = true;
+    if (submitButton) submitButton.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      if (!response.ok) throw new Error('Feedback submission failed');
       resetFormState();
-    } else {
-      console.log('Валідація не пройдена, є помилки в полях.');
+      openModal();
+    } catch {
+      if (submitError) {
+        submitError.textContent = 'Не вдалося надіслати повідомлення. Спробуйте ще раз.';
+        submitError.hidden = false;
+      }
+    } finally {
+      sending = false;
+      if (submitButton) submitButton.disabled = false;
+      form.removeAttribute('aria-busy');
     }
   });
 }

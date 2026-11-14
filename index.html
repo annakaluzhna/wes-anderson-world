@@ -555,8 +555,11 @@
       </p>
     </div>
 
-    <form id="feedbackForm" novalidate class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <form id="feedbackForm" name="club-contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate class="grid grid-cols-1 md:grid-cols-2 gap-4">
       
+      <input type="hidden" name="form-name" value="club-contact">
+      <p hidden><label>Залиште це поле порожнім <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <p id="feedbackSubmitError" role="alert" class="md:col-span-2 text-sm font-bold text-red-800" hidden></p>
       <!-- Поле: Ім'я -->
       <div class="flex flex-col">
         <label for="username" class="mb-1 text-xs md:text-sm font-bold text-[#32331E]">Ваше ім'я *</label>
@@ -649,7 +652,7 @@
       Дякуємо!
     </h3>
     <p id="modalDescription" class="text-[#32331E] mb-6 text-sm leading-relaxed">
-      Ваше повідомлення успішно надіслано (імітація надсилання). Ми зв'яжемося з вами найближчим часом.
+      Ваше повідомлення успішно надіслано. Ми зв'яжемося з вами найближчим часом.
     </p>
     <button 
       id="closeModalBtn" 
