@@ -14,6 +14,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
+  <script src="assets/js/header.js" defer></script>
 
   <style>
   #burger-toggle:checked ~ .main-nav {
@@ -24,11 +25,37 @@
     padding-bottom: 1rem;
   }
 </style>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+  <style>
+    #film-carousel {
+      --swiper-pagination-color: #CFAA13;
+      --swiper-pagination-bullet-inactive-color: #CFAA13;
+      --swiper-pagination-bullet-inactive-opacity: 0.45;
+      padding: 4px 6px 8px;
+    }
+
+    #film-carousel .swiper-slide {
+      height: auto;
+    }
+
+    #film-carousel .carousel-card-content {
+      display: grid;
+      grid-template-rows: minmax(4.5rem, auto) minmax(5.5rem, auto) 1.75rem 3.75rem 2.625rem;
+      gap: 0.25rem;
+      overflow-wrap: anywhere;
+    }
+
+    #film-carousel .swiper-pagination {
+      position: static;
+      margin-top: 16px;
+    }
+  </style>
 </head>
 <body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
 
 <!-- ШАПКА САЙТУ -->
-<header class="sticky top-0 left-0 w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 z-50">    
+<header class="site-header w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 z-50">
     <!-- ЛОГОТИП ТА НАЗВА (ЗБЕРЕЖЕНО ВЕЛИКІ РОЗМІРИ) -->
     <a href="index.html" class="flex items-center gap-3 shrink-0 text-[#32331E]">
       <img src="assets/icons/logo.svg" alt="The Wes Anderson World" class="w-[70px] md:w-[80px] h-[70px] md:h-[80px] object-contain">
@@ -121,7 +148,7 @@
     </section>
 
 <!-- СЕКЦІЯ КАРУСЕЛІ -->
-    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 md:gap-12 items-center" aria-labelledby="carousel-title">
+    <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12 grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] gap-8 md:gap-12 items-center" aria-labelledby="carousel-title">
       
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
         <h2 id="carousel-title" class="font-heading text-3xl md:text-4xl font-normal leading-tight">Карусель кадрів</h2>
@@ -129,138 +156,265 @@
           Знамениті стрічки, з яких варто розпочати занурення у світ симетрії та авторського гумору.
         </p>
         <div class="flex gap-3 mt-2">
-          <button type="button" class="w-11 h-11 rounded-full border-2 border-[#32331E] bg-white inline-flex items-center justify-center shadow-retro shadow-retro-hover transition-all cursor-pointer" aria-label="Попередній кадр">
+          <button type="button" class="w-11 h-11 rounded-full border-2 border-[#32331E] bg-white inline-flex items-center justify-center shadow-retro shadow-retro-hover transition-all cursor-pointer" id="film-carousel-prev" aria-label="Попередній кадр">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           </button>
-          <button type="button" class="w-11 h-11 rounded-full border-2 border-[#32331E] bg-white inline-flex items-center justify-center shadow-retro shadow-retro-hover transition-all cursor-pointer" aria-label="Наступний кадр">
+          <button type="button" class="w-11 h-11 rounded-full border-2 border-[#32331E] bg-white inline-flex items-center justify-center shadow-retro shadow-retro-hover transition-all cursor-pointer" id="film-carousel-next" aria-label="Наступний кадр">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
 
- <!-- КАРТКИ ФІЛЬМІВ -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch" role="region" aria-roledescription="carousel" aria-label="Карусель кадрів">
+      <!-- КАРТКИ ФІЛЬМІВ -->
+      <div id="film-carousel" class="swiper w-full min-w-0" role="region" aria-roledescription="карусель" aria-labelledby="carousel-title">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
+              <div class="relative w-full">
+                <img src="assets/images/grand-budapest.jpg" alt="Ілюстрація готелю Гранд Будапешт" class="w-full h-[280px] object-cover">
 
-        <!-- Картка 1: Готель «Гранд Будапешт» -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
-          <div class="relative w-full">
-            <img src="assets/images/grand-budapest.jpg" alt="Ілюстрація готелю Гранд Будапешт" class="w-full h-[280px] object-cover">
-            
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
-              <button type="button" class="flex-1 h-full bg-[#E47991] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#596AAC] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#C6CDF6] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#7295CC] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#CE2854] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
+                <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
+                  <button type="button" class="flex-1 h-full bg-[#E47991] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+                  <button type="button" class="flex-1 h-full bg-[#596AAC] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+                  <button type="button" class="flex-1 h-full bg-[#C6CDF6] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+                  <button type="button" class="flex-1 h-full bg-[#7295CC] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+                  <button type="button" class="flex-1 h-full bg-[#CE2854] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+                </div>
+              </div>
+
+              <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+                КОМЕДІЯ / ДРАМА
+              </span>
+
+              <div class="carousel-card-content p-3.5 text-center flex-grow">
+                <h3 class="font-heading text-xl leading-tight flex items-center justify-center">Готель «Гранд Будапешт»</h3>
+
+                <p class="text-xs lg:text-sm flex items-start justify-center leading-snug">Пригода консьєржа та юного портьє.</p>
+
+                <div class="flex items-center justify-center">
+                  <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2014 • 99 хв</span>
+                </div>
+
+                <div class="flex items-center justify-center">
+                  <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Готель Гранд Будапешт до Watchlist">
+                    <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                    <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+                  </button>
+                </div>
+
+                <a href="grand-budapest.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+                  Переглянути
+                </a>
+              </div>
+            </article>
           </div>
 
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            КОМЕДІЯ / ДРАМА
-          </span>
+          <div class="swiper-slide">
+            <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
+              <div class="relative w-full">
+                <img src="assets/images/mister-fox.jpg" alt="Ілюстрація Фантастичний містер Лис" class="w-full h-[280px] object-cover">
+                <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
+                  <button type="button" class="flex-1 h-full bg-[#D2691E] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+                  <button type="button" class="flex-1 h-full bg-[#D9A441] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+                  <button type="button" class="flex-1 h-full bg-[#A34727] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+                  <button type="button" class="flex-1 h-full bg-[#F4E3C1] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+                  <button type="button" class="flex-1 h-full bg-[#7B4F32] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+                </div>
+              </div>
 
-          <div class="p-3.5 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl h-[56px] flex items-center justify-center">Готель «Гранд Будапешт»</h3>
-            
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Пригода консьєржа та юного портьє.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2014 • 99 хв</span>
-            </div>
+              <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+                АНІМАЦІЯ / КОМЕДІЯ
+              </span>
 
-            <div class="h-[60px] flex items-center justify-center my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Готель Гранд Будапешт до Watchlist">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
-              </button>
-            </div>
+              <div class="carousel-card-content p-3.5 text-center flex-grow">
+                <h3 class="font-heading text-xl leading-tight flex items-center justify-center">Фантастичний містер Лис</h3>
 
-            <a href="grand-budapest.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
-          </div>
-        </article>
+                <p class="text-xs lg:text-sm flex items-start justify-center leading-snug">Осіння казка про свободу, родину та хитрий план.</p>
 
-        <!-- Картка 2: Фантастичний містер Лис -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
-          <div class="relative w-full">
-            <img src="assets/images/mister-fox.jpg" alt="Ілюстрація Фантастичний містер Лис" class="w-full h-[280px] object-cover">
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
-              <button type="button" class="flex-1 h-full bg-[#D2691E] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#D9A441] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#A34727] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#F4E3C1] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#7B4F32] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
-          </div>
+                <div class="flex items-center justify-center">
+                  <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2009 • 87 хв</span>
+                </div>
 
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            АНІМАЦІЯ / КОМЕДІЯ
-          </span>
+                <div class="flex items-center justify-center">
+                  <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Фантастичний містер Лис до Watchlist">
+                    <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                    <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+                  </button>
+                </div>
 
-          <div class="p-3.5 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl h-[56px] flex items-center justify-center">Фантастичний містер Лис</h3>
-            
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Осіння казка про свободу, родину та хитрий план.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2009 • 87 хв</span>
-            </div>
-
-            <div class="h-[60px] flex items-center justify-center my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Фантастичний містер Лис до Watchlist">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
-              </button>
-            </div>
-
-            <a href="mister-fox.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
-          </div>
-        </article>
-
-        <!-- Картка 3: Французький вісник -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
-          <div class="relative w-full">
-            <img src="assets/images/french-dispatch.jpg" 
-     alt="Ілюстрація Французький вісник" 
-     class="w-full h-[280px] object-cover object-[center_15%]">
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
-              <button type="button" class="flex-1 h-full bg-[#892118] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#EC9760] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#4FBBBB] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#351527] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#88988B] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
+                <a href="mister-fox.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+                  Переглянути
+                </a>
+              </div>
+            </article>
           </div>
 
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            КОМЕДІЯ / ДРАМА
-          </span>
+          <div class="swiper-slide">
+            <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
+              <div class="relative w-full">
+                <img src="assets/images/french-dispatch.jpg"
+         alt="Ілюстрація Французький вісник"
+         class="w-full h-[280px] object-cover object-[center_15%]">
+                <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
+                  <button type="button" class="flex-1 h-full bg-[#892118] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+                  <button type="button" class="flex-1 h-full bg-[#EC9760] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+                  <button type="button" class="flex-1 h-full bg-[#4FBBBB] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+                  <button type="button" class="flex-1 h-full bg-[#351527] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+                  <button type="button" class="flex-1 h-full bg-[#88988B] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+                </div>
+              </div>
 
-          <div class="p-3.5 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl h-[56px] flex items-center justify-center">Французький вісник</h3>
-            
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Збірка іронічних історій з останнього випуску часопису.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2021 • 108 хв</span>
-            </div>
+              <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+                КОМЕДІЯ / ДРАМА
+              </span>
 
-            <div class="h-[60px] flex items-center justify-center my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Французький вісник до Watchlist">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
-              </button>
-            </div>
+              <div class="carousel-card-content p-3.5 text-center flex-grow">
+                <h3 class="font-heading text-xl leading-tight flex items-center justify-center">Французький вісник</h3>
 
-            <a href="french-dispatch.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
+                <p class="text-xs lg:text-sm flex items-start justify-center leading-snug">Збірка іронічних історій з останнього випуску часопису.</p>
+
+                <div class="flex items-center justify-center">
+                  <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2021 • 108 хв</span>
+                </div>
+
+                <div class="flex items-center justify-center">
+                  <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Французький вісник до Watchlist">
+                    <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                    <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+                  </button>
+                </div>
+
+                <a href="french-dispatch.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+                  Переглянути
+                </a>
+              </div>
+            </article>
           </div>
-        </article>
 
+          <div class="swiper-slide">
+            <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
+              <div class="relative w-full">
+                <img src="assets/images/moonrise-kingdom.jpg" alt="Ілюстрація Королівство повного місяця" class="w-full h-[280px] object-cover object-[center_50%]" loading="lazy">
+
+                <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
+                  <button type="button" class="flex-1 h-full bg-[#2F3C7E] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+                  <button type="button" class="flex-1 h-full bg-[#8EB38B] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+                  <button type="button" class="flex-1 h-full bg-[#F3C1B3] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+                  <button type="button" class="flex-1 h-full bg-[#A9A94C] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+                  <button type="button" class="flex-1 h-full bg-[#76681A] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+                </div>
+              </div>
+
+              <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+                МЕЛОДРАМА / ПРИГОДИ
+              </span>
+
+              <div class="carousel-card-content p-3.5 text-center flex-grow">
+                <h3 class="font-heading text-xl leading-tight flex items-center justify-center">Королівство повного місяця</h3>
+
+                <p class="text-xs lg:text-sm flex items-start justify-center leading-snug">Втеча двох підлітків на острів. Колір тут працює як компас.</p>
+
+                <div class="flex items-center justify-center">
+                  <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2012 • 94 хв</span>
+                </div>
+
+                <div class="flex items-center justify-center">
+                  <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Королівство повного місяця до Watchlist">
+                    <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                    <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+                  </button>
+                </div>
+
+                <a href="moonrise-kingdom.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+                  Переглянути
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="swiper-slide">
+            <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
+              <div class="relative w-full">
+                <img src="assets/images/royal-tenenbaums.jpg" alt="Ілюстрація Сімейка Тененбаумів" class="w-full h-[280px] object-cover object-[center_25%]" loading="lazy">
+
+                <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
+                  <button type="button" class="flex-1 h-full bg-[#C51A1A] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+                  <button type="button" class="flex-1 h-full bg-[#E7C7C1] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+                  <button type="button" class="flex-1 h-full bg-[#B3C9E0] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+                  <button type="button" class="flex-1 h-full bg-[#A36A2F] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+                  <button type="button" class="flex-1 h-full bg-[#2C3A52] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+                </div>
+              </div>
+
+              <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+                ДРАМА / КОМЕДІЯ
+              </span>
+
+              <div class="carousel-card-content p-3.5 text-center flex-grow">
+                <h3 class="font-heading text-xl leading-tight flex items-center justify-center">Сімейка Тененбаумів</h3>
+
+                <p class="text-xs lg:text-sm flex items-start justify-center leading-snug">Троє колишніх вундеркіндів повертаються додому. Родинний портрет із тріщинами.</p>
+
+                <div class="flex items-center justify-center">
+                  <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2001 • 110 хв</span>
+                </div>
+
+                <div class="flex items-center justify-center">
+                  <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Сімейка Тененбаумів до Watchlist">
+                    <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                    <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+                  </button>
+                </div>
+
+                <a href="royal-tenenbaums.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+                  Переглянути
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="swiper-slide">
+            <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro shadow-retro-hover flex flex-col overflow-hidden h-full transition-all duration-200">
+              <div class="relative w-full">
+                <img src="assets/images/asteroid-city.jpg" alt="Ілюстрація Місто астероїдів" class="w-full h-[280px] object-cover object-[center_15%]" loading="lazy">
+
+                <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" role="img" aria-label="Кольорова палітра фільму">
+                  <button type="button" class="flex-1 h-full bg-[#55D1BF] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
+                  <button type="button" class="flex-1 h-full bg-[#FAAB22] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
+                  <button type="button" class="flex-1 h-full bg-[#7B1200] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
+                  <button type="button" class="flex-1 h-full bg-[#D4A27F] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
+                  <button type="button" class="flex-1 h-full bg-[#C9A96C] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+                </div>
+              </div>
+
+              <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
+                КОМЕДІЯ / ФАНТАСТИКА
+              </span>
+
+              <div class="carousel-card-content p-3.5 text-center flex-grow">
+                <h3 class="font-heading text-xl leading-tight flex items-center justify-center">Місто астероїдів</h3>
+
+                <p class="text-xs lg:text-sm flex items-start justify-center leading-snug">Зустріч у пустелі змінює звичний порядок. Родина, наука й незвідане.</p>
+
+                <div class="flex items-center justify-center">
+                  <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2023 • 105 хв</span>
+                </div>
+
+                <div class="flex items-center justify-center">
+                  <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors" aria-label="Додати Місто астероїдів до Watchlist">
+                    <img src="assets/icons/icon-star.svg" alt="" class="w-[55px] h-[55px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
+                    <span class="group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+                  </button>
+                </div>
+
+                <a href="asteroid-city.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+                  Переглянути
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
       </div>
     </section>
 
@@ -481,5 +635,38 @@
 </div>
 
 <script src="assets/js/validation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script>
+  if (window.Swiper) {
+    new Swiper('#film-carousel', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      },
+      navigation: {
+        addIcons: false,
+        prevEl: '#film-carousel-prev',
+        nextEl: '#film-carousel-next'
+      },
+      pagination: {
+        el: '#film-carousel .swiper-pagination',
+        clickable: true
+      },
+      autoplay: {
+        delay: 3500,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false
+      },
+      a11y: {
+        prevSlideMessage: 'Попередній кадр',
+        nextSlideMessage: 'Наступний кадр',
+        paginationBulletMessage: 'Перейти до кадру {{index}}'
+      }
+    });
+  }
+</script>
 </body>
 </html>

@@ -51,3 +51,29 @@ body {
 .group:hover .star-icon-yellow {
   filter: invert(72%) sepia(85%) saturate(800%) hue-rotate(1deg) brightness(95%) contrast(88%);
 }
+
+/* Хедер під час прокручування */
+.site-header {
+  position: sticky;
+  top: 0;
+  transition: transform 200ms ease;
+}
+
+.site-header--hidden:not(:has(:focus-visible)) {
+  transform: translateY(-100%);
+}
+
+@media (max-width: 1023px) {
+  .site-header #burger-toggle:checked ~ .main-nav {
+    max-height: min(400px, calc(100vh - 104px)) !important;
+    max-height: min(400px, calc(100dvh - 104px)) !important;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
+}

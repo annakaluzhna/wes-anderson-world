@@ -14,6 +14,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
+  <script src="assets/js/header.js" defer></script>
 
   <!-- CSS ДЛЯ БУРГЕР-МЕНЮ ТА 3D ПЕРЕВЕРТАННЯ КАРТОК (ВІДПОВІДНО ДО ЧИСТОГО CSS3) -->
   <style>
@@ -24,11 +25,13 @@
       padding-bottom: 1rem;
     }
   </style>
+  <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js" defer></script>
+  <script src="assets/js/plugins.js" defer></script>
 </head>
 <body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
 
   <!-- ШАПКА САЙТУ -->
-  <header class="w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 relative z-50">
+  <header class="site-header w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 z-50">
     
     <!-- ЛОГОТИП ТА НАЗВА -->
     <a href="index.html" class="flex items-center gap-3 shrink-0 text-[#32331E]">
@@ -94,7 +97,7 @@
       <div class="max-w-[800px] mx-auto">
         <h1 id="bio-hero-title" class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4">Людина, яка переписала закони візуального кіно</h1>
         <p class="text-sm md:text-base lg:text-lg font-semibold leading-relaxed text-[#32331E]">
-          Кожен кадр — це ретельно збудована композиція. Тут ви знайдете історію режисера та розбір його візуальної мови.
+          Кожен кадр — це ретельно збудована композиція. <span id="bio-typed">Тут ви знайдете історію режисера та розбір його візуальної мови.</span>
         </p>
       </div>
     </section>

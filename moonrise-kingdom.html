@@ -14,6 +14,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
+  <script src="assets/js/header.js" defer></script>
 
   <!-- СТИЛІ ДЛЯ БУРГЕР-МЕНЮ ТА ТЕКСТОВОЇ ГАРМОШКИ -->
   <style>
@@ -35,11 +36,14 @@
       transform: rotate(180deg);
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
+  <script src="assets/js/film-gallery.js" defer></script>
 </head>
 <body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
 
   <!-- ШАПКА САЙТУ -->
-  <header class="w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 relative z-50">
+  <header class="site-header w-full bg-[#FDFBF7] border-b-2 border-[#32331E] px-4 md:px-8 py-0 md:py-0.5 flex flex-wrap items-center justify-between gap-4 z-50">
     <a href="index.html" class="flex items-center gap-3 shrink-0 text-[#32331E]">
       <img src="assets/icons/logo.svg" alt="The Wes Anderson World" class="w-[70px] md:w-[80px] h-[70px] md:h-[80px] object-contain">
       <span class="hidden xl:inline text-base md:text-lg font-bold tracking-tight whitespace-nowrap">The Wes Anderson World</span>
@@ -120,7 +124,9 @@
 
         <!-- ПРАВА ЧАСТИНА: ПОСТЕР ФІЛЬМУ -->
         <div class="flex justify-center lg:justify-end">
-          <img src="assets/images/Moonrise Kingdom.1.jpg" alt="Постер фільму Королівство повного місяця" class="w-full max-w-[480px] h-[380px] sm:h-[460px] object-cover rounded-lg border-2 border-[#32331E] shadow-retro hover:-translate-y-1.5 hover:shadow-retro-hover transition-all duration-300">
+          <a href="assets/images/Moonrise Kingdom.1.jpg" data-fancybox="moonrise-kingdom" data-caption="Постер фільму «Королівство повного місяця»" class="block w-full max-w-[480px] cursor-zoom-in">
+            <img src="assets/images/Moonrise Kingdom.1.jpg" alt="Постер фільму Королівство повного місяця" class="w-full max-w-[480px] h-[380px] sm:h-[460px] object-cover rounded-lg border-2 border-[#32331E] shadow-retro hover:-translate-y-1.5 hover:shadow-retro-hover transition-all duration-300">
+          </a>
         </div>
 
       </div>
@@ -259,15 +265,21 @@
 
       <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 pb-6 scrollbar-none">
         <figure class="snap-center shrink-0 w-[85%] md:w-[70%] lg:w-[60%] bg-white border-2 border-[#32331E] rounded-lg shadow-retro p-2 hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
-          <img src="assets/images/Moonrise Kingdom.2.jpg" alt="Кадр з фільму Королівство повного місяця 1" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+          <a href="assets/images/Moonrise Kingdom.2.jpg" data-fancybox="moonrise-kingdom" data-caption="«Королівство повного місяця» — кадр 1" class="block cursor-zoom-in">
+            <img src="assets/images/Moonrise Kingdom.2.jpg" alt="Кадр з фільму Королівство повного місяця 1" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+          </a>
         </figure>
 
         <figure class="snap-center shrink-0 w-[85%] md:w-[70%] lg:w-[60%] bg-white border-2 border-[#32331E] rounded-lg shadow-retro p-2 hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
-          <img src="assets/images/Moonrise Kingdom.3.jpg" alt="Кадр з фільму Королівство повного місяця 2" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+          <a href="assets/images/Moonrise Kingdom.3.jpg" data-fancybox="moonrise-kingdom" data-caption="«Королівство повного місяця» — кадр 2" class="block cursor-zoom-in">
+            <img src="assets/images/Moonrise Kingdom.3.jpg" alt="Кадр з фільму Королівство повного місяця 2" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+          </a>
         </figure>
 
         <figure class="snap-center shrink-0 w-[85%] md:w-[70%] lg:w-[60%] bg-white border-2 border-[#32331E] rounded-lg shadow-retro p-2 hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
-          <img src="assets/images/Moonrise Kingdom.4.jpg" alt="Кадр з фільму Королівство повного місяця 3" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+          <a href="assets/images/Moonrise Kingdom.4.jpg" data-fancybox="moonrise-kingdom" data-caption="«Королівство повного місяця» — кадр 3" class="block cursor-zoom-in">
+            <img src="assets/images/Moonrise Kingdom.4.jpg" alt="Кадр з фільму Королівство повного місяця 3" loading="lazy" class="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover rounded">
+          </a>
         </figure>
       </div>
     </section>
