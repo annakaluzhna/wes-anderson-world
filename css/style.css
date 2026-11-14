@@ -95,3 +95,37 @@ body {
     transition: none;
   }
 }
+
+/* Активні стани Watchlist */
+:is([data-watchlist-id][aria-pressed="true"], [data-remove][aria-pressed="true"], [data-watched][aria-pressed="true"]) > .watchlist-original-icon {
+  filter: none;
+}
+
+:is([data-watchlist-id][aria-pressed="true"], [data-remove][aria-pressed="true"]) .watchlist-icon-fill {
+  fill: #CFAA13;
+}
+
+[data-watched][aria-pressed="true"] .watchlist-icon-fill {
+  fill: #008001;
+}
+
+[data-watchlist-id][aria-pressed="true"] > [data-watchlist-label] {
+  color: #CFAA13;
+}
+
+[data-watched][aria-pressed="true"] > span {
+  color: #008001;
+}
+
+.palette-toast {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.palette-toast-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palette-toast { transition: none; }
+}

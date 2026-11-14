@@ -39,6 +39,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
   <script src="assets/js/film-gallery.js" defer></script>
+  <script src="assets/js/watchlist.js" defer></script>
+  <script src="assets/js/palette-copy.js" defer></script>
 </head>
 <body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
 
@@ -303,52 +305,52 @@
       <!-- ГРІД З 10 КОЛЬОРІВ -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-[1000px] mx-auto">
         
-        <button type="button" onclick="navigator.clipboard.writeText('#C49A6C')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#C49A6C" title="Скопіювати #C49A6C" aria-label="Скопіювати колір #C49A6C" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#C49A6C] shrink-0"></span>
           <span class="truncate">#C49A6C</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#5D6B7B')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#5D6B7B" title="Скопіювати #5D6B7B" aria-label="Скопіювати колір #5D6B7B" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#5D6B7B] shrink-0"></span>
           <span class="truncate">#5D6B7B</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#D9A01F')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#D9A01F" title="Скопіювати #D9A01F" aria-label="Скопіювати колір #D9A01F" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#D9A01F] shrink-0"></span>
           <span class="truncate">#D9A01F</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#1A2633')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#1A2633" title="Скопіювати #1A2633" aria-label="Скопіювати колір #1A2633" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#1A2633] shrink-0"></span>
           <span class="truncate">#1A2633</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#F3EBDD')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#F3EBDD" title="Скопіювати #F3EBDD" aria-label="Скопіювати колір #F3EBDD" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#F3EBDD] shrink-0"></span>
           <span class="truncate">#F3EBDD</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#7D8243')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#7D8243" title="Скопіювати #7D8243" aria-label="Скопіювати колір #7D8243" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#7D8243] shrink-0"></span>
           <span class="truncate">#7D8243</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#592E2B')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#592E2B" title="Скопіювати #592E2B" aria-label="Скопіювати колір #592E2B" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#592E2B] shrink-0"></span>
           <span class="truncate">#592E2B</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#C0502B')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#C0502B" title="Скопіювати #C0502B" aria-label="Скопіювати колір #C0502B" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#C0502B] shrink-0"></span>
           <span class="truncate">#C0502B</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#B5B2A5')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#B5B2A5" title="Скопіювати #B5B2A5" aria-label="Скопіювати колір #B5B2A5" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#B5B2A5] shrink-0"></span>
           <span class="truncate">#B5B2A5</span>
         </button>
 
-        <button type="button" onclick="navigator.clipboard.writeText('#A32100')" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
+        <button data-copy-hex="#A32100" title="Скопіювати #A32100" aria-label="Скопіювати колір #A32100" type="button" class="flex items-center gap-2 bg-white border-2 border-[#32331E] rounded-md p-2 shadow-retro hover:-translate-y-1 hover:shadow-retro-hover text-xs font-bold transition-all cursor-pointer">
           <span class="w-6 h-6 rounded border border-[#32331E] bg-[#A32100] shrink-0"></span>
           <span class="truncate">#A32100</span>
         </button>
@@ -368,9 +370,7 @@
             Додайте фільм до особистого списку або знайдіть наступну історію під свій настрій.
           </p>
           <!-- Кнопка розрахована на виділення на фоні #B5B2A5 -->
-          <button type="button" class="w-[160px] h-[42px] inline-flex items-center justify-center bg-[#C0502B] text-white hover:bg-[#A32100] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto">
-            Додати
-          </button>
+          <button data-watchlist-id="rushmore" aria-pressed="false" type="button" class="w-[160px] h-[42px] inline-flex items-center justify-center bg-[#C0502B] text-white hover:bg-[#A32100] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all mt-auto"><span data-watchlist-label="Додати">Додати</span></button>
         </article>
 
         <article class="bg-[#B5B2A5] border-2 border-[#32331E] rounded-lg shadow-retro p-8 flex flex-col items-center text-center justify-between hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
@@ -401,11 +401,11 @@
         <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transform hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
           <div class="relative w-full">
 <img src="assets/images/royal-tenenbaums.jpg" alt="Ілюстрація Сімейка Тененбаумів" class="w-full h-[380px] object-cover object-[center_20%]" loading="lazy">            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" aria-label="Кольорова палітра фільму">
-              <button type="button" class="flex-1 h-full bg-[#C51A1A] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#E7C7C1] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#B3C9E0] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#A36A2F] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#2C3A52] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+              <button data-copy-hex="#C51A1A" title="Скопіювати #C51A1A" aria-label="Скопіювати колір #C51A1A" type="button" class="flex-1 h-full bg-[#C51A1A] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#E7C7C1" title="Скопіювати #E7C7C1" aria-label="Скопіювати колір #E7C7C1" type="button" class="flex-1 h-full bg-[#E7C7C1] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#B3C9E0" title="Скопіювати #B3C9E0" aria-label="Скопіювати колір #B3C9E0" type="button" class="flex-1 h-full bg-[#B3C9E0] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#A36A2F" title="Скопіювати #A36A2F" aria-label="Скопіювати колір #A36A2F" type="button" class="flex-1 h-full bg-[#A36A2F] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#2C3A52" title="Скопіювати #2C3A52" aria-label="Скопіювати колір #2C3A52" type="button" class="flex-1 h-full bg-[#2C3A52] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
             </div>
           </div>
 
@@ -422,9 +422,9 @@
             </div>
 
             <div class="h-[60px] flex items-center justify-center my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0" aria-label="Додати Сімейка Тененбаумів до Watchlist">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+              <button data-watchlist-id="royal-tenenbaums" aria-pressed="false" type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0" aria-label="Додати Сімейка Тененбаумів до Watchlist">
+                <svg class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow watchlist-original-icon" viewBox="0 0 1009 1002" aria-hidden="true"><path class="watchlist-icon-fill" fill="transparent" d="M486.16 310.85C516.53 314.23 521.83 359.06 543.79 373.22C559.63 383.44 627.4 367.92 633.21 392.03C638.77 415.06 599.53 440 588.77 460.72L588.11 462.03C589.43 491.93 608.96 518.2 583.68 542.692C592.14 572.775 608.34 600.475 623.9 627.205C628.18 634.565 640.81 651.335 633.61 658.455C627.08 660.375 611.59 651.355 604.98 648.425C594.19 643.635 583.22 639.285 572.09 635.375C570.12 643.355 568.1 651.315 566.01 659.265C564.65 664.275 562.85 672.085 558.28 674.685C540.16 675.115 515.96 591.905 511.07 576.915C510.38 574.195 509.59 570.785 507.2 569.475C497.92 581.385 476.87 690.545 461.4 688.815C455.07 684.065 441.14 651.385 436.71 641.865C427.52 648.055 400.92 666.105 391.21 667.925C387.5 666.895 389.08 667.815 386.36 664.965C385.76 662.705 385.85 660.635 386.77 658.455C400.61 625.905 411.68 589.805 427.37 558.292C427.27 558.012 427.16 557.742 427.06 557.472L426.58 556.102C415.62 525.64 436.37 500.55 434.86 476.34C427.23 462.42 386.99 445.71 383.52 430.51C378.77 409.69 434.12 397.99 449.85 393.52C452.1 379.31 457.91 363.08 462.09 349.04C466.22 335.15 470.54 315.14 486.16 310.85Z"/><path fill="#111" d="M486.16 310.85C516.53 314.23 521.83 359.06 543.79 373.22C559.63 383.44 627.4 367.92 633.21 392.03C638.77 415.06 599.53 440 588.77 460.72L588.11 462.03C589.43 491.93 608.96 518.2 583.68 542.692C592.14 572.775 608.34 600.475 623.9 627.205C628.18 634.565 640.81 651.335 633.61 658.455C627.08 660.375 611.59 651.355 604.98 648.425C594.19 643.635 583.22 639.285 572.09 635.375C570.12 643.355 568.1 651.315 566.01 659.265C564.65 664.275 562.85 672.085 558.28 674.685C540.16 675.115 515.96 591.905 511.07 576.915C510.38 574.195 509.59 570.785 507.2 569.475C497.92 581.385 476.87 690.545 461.4 688.815C455.07 684.065 441.14 651.385 436.71 641.865C427.52 648.055 400.92 666.105 391.21 667.925C387.5 666.895 389.08 667.815 386.36 664.965C385.76 662.705 385.85 660.635 386.77 658.455C400.61 625.905 411.68 589.805 427.37 558.292C427.27 558.012 427.16 557.742 427.06 557.472L426.58 556.102C415.62 525.64 436.37 500.55 434.86 476.34C427.23 462.42 386.99 445.71 383.52 430.51C378.77 409.69 434.12 397.99 449.85 393.52C452.1 379.31 457.91 363.08 462.09 349.04C466.22 335.15 470.54 315.14 486.16 310.85ZM511.71 502.71L512.97 503C530.84 507.2 557.66 532.66 573.6 525.04C588.32 518 564.83 472.89 572.73 454.2C580.45 435.94 613.09 411.6 616.85 398.28C609.03 392.81 549.26 396.32 535.27 388.73C516.45 378.54 501.98 333.75 487.58 330.02C478.02 349.93 469.87 392.56 461.75 407.06L460.56 407.7C445.07 415.86 415.74 416.73 406.94 426.75C404.86 434.09 412.15 437.2 417.42 440.74C434.26 452.06 457.18 462.35 451.5 487C447.33 508.53 441.15 523.34 439.62 545.562C452.93 536.14 496.09 506.4 511.71 502.71ZM439.51 563.455C431.19 577.575 417.94 620.795 410.07 639.345C416.27 635.855 434.99 624.255 441.7 625.415C451.46 627.105 455.78 652.875 463.28 654.735C467.42 651.835 469.82 637.735 471.57 632.225L487.18 582.635C489.68 574.525 497.67 552.542 499.02 545.822C501.94 541.112 508.81 536.69 511.9 540.882C522.7 555.572 531.27 590.185 537.11 605.965C542.09 619.235 547.44 632.355 553.16 645.315C559.99 625.515 562.85 614.635 586.24 623.635L608.41 632.385C595.69 605.275 577.14 574.725 570.08 545.342C556.18 543.382 555.69 542.772 543.31 537.68C534.72 534.16 517.93 521.09 511.76 520.55C488.86 531.61 462.18 553.062 439.51 563.455Z"/></svg>
+                <span data-watchlist-label="До Watchlist"  class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
               </button>
             </div>
 
@@ -438,11 +438,11 @@
         <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transform hover:-translate-y-1 hover:shadow-retro-hover transition-all duration-300">
           <div class="relative w-full">
 <img src="assets/images/moonrise-kingdom.jpg" alt="Ілюстрація Королівство повного місяця" class="w-full h-[380px] object-cover object-[center_50%]" loading="lazy">            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]" aria-label="Кольорова палітра фільму">
-              <button type="button" class="flex-1 h-full bg-[#2F3C7E] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#8EB38B] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#F3C1B3] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#A9A94C] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#76681A] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+              <button data-copy-hex="#2F3C7E" title="Скопіювати #2F3C7E" aria-label="Скопіювати колір #2F3C7E" type="button" class="flex-1 h-full bg-[#2F3C7E] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#8EB38B" title="Скопіювати #8EB38B" aria-label="Скопіювати колір #8EB38B" type="button" class="flex-1 h-full bg-[#8EB38B] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#F3C1B3" title="Скопіювати #F3C1B3" aria-label="Скопіювати колір #F3C1B3" type="button" class="flex-1 h-full bg-[#F3C1B3] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#A9A94C" title="Скопіювати #A9A94C" aria-label="Скопіювати колір #A9A94C" type="button" class="flex-1 h-full bg-[#A9A94C] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
+              <button data-copy-hex="#76681A" title="Скопіювати #76681A" aria-label="Скопіювати колір #76681A" type="button" class="flex-1 h-full bg-[#76681A] hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all cursor-pointer"></button>
             </div>
           </div>
 
@@ -459,9 +459,9 @@
             </div>
 
             <div class="h-[60px] flex items-center justify-center my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0" aria-label="Додати Королівство повного місяця до Watchlist">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
+              <button data-watchlist-id="moonrise-kingdom" aria-pressed="false" type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0" aria-label="Додати Королівство повного місяця до Watchlist">
+                <svg class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow watchlist-original-icon" viewBox="0 0 1009 1002" aria-hidden="true"><path class="watchlist-icon-fill" fill="transparent" d="M486.16 310.85C516.53 314.23 521.83 359.06 543.79 373.22C559.63 383.44 627.4 367.92 633.21 392.03C638.77 415.06 599.53 440 588.77 460.72L588.11 462.03C589.43 491.93 608.96 518.2 583.68 542.692C592.14 572.775 608.34 600.475 623.9 627.205C628.18 634.565 640.81 651.335 633.61 658.455C627.08 660.375 611.59 651.355 604.98 648.425C594.19 643.635 583.22 639.285 572.09 635.375C570.12 643.355 568.1 651.315 566.01 659.265C564.65 664.275 562.85 672.085 558.28 674.685C540.16 675.115 515.96 591.905 511.07 576.915C510.38 574.195 509.59 570.785 507.2 569.475C497.92 581.385 476.87 690.545 461.4 688.815C455.07 684.065 441.14 651.385 436.71 641.865C427.52 648.055 400.92 666.105 391.21 667.925C387.5 666.895 389.08 667.815 386.36 664.965C385.76 662.705 385.85 660.635 386.77 658.455C400.61 625.905 411.68 589.805 427.37 558.292C427.27 558.012 427.16 557.742 427.06 557.472L426.58 556.102C415.62 525.64 436.37 500.55 434.86 476.34C427.23 462.42 386.99 445.71 383.52 430.51C378.77 409.69 434.12 397.99 449.85 393.52C452.1 379.31 457.91 363.08 462.09 349.04C466.22 335.15 470.54 315.14 486.16 310.85Z"/><path fill="#111" d="M486.16 310.85C516.53 314.23 521.83 359.06 543.79 373.22C559.63 383.44 627.4 367.92 633.21 392.03C638.77 415.06 599.53 440 588.77 460.72L588.11 462.03C589.43 491.93 608.96 518.2 583.68 542.692C592.14 572.775 608.34 600.475 623.9 627.205C628.18 634.565 640.81 651.335 633.61 658.455C627.08 660.375 611.59 651.355 604.98 648.425C594.19 643.635 583.22 639.285 572.09 635.375C570.12 643.355 568.1 651.315 566.01 659.265C564.65 664.275 562.85 672.085 558.28 674.685C540.16 675.115 515.96 591.905 511.07 576.915C510.38 574.195 509.59 570.785 507.2 569.475C497.92 581.385 476.87 690.545 461.4 688.815C455.07 684.065 441.14 651.385 436.71 641.865C427.52 648.055 400.92 666.105 391.21 667.925C387.5 666.895 389.08 667.815 386.36 664.965C385.76 662.705 385.85 660.635 386.77 658.455C400.61 625.905 411.68 589.805 427.37 558.292C427.27 558.012 427.16 557.742 427.06 557.472L426.58 556.102C415.62 525.64 436.37 500.55 434.86 476.34C427.23 462.42 386.99 445.71 383.52 430.51C378.77 409.69 434.12 397.99 449.85 393.52C452.1 379.31 457.91 363.08 462.09 349.04C466.22 335.15 470.54 315.14 486.16 310.85ZM511.71 502.71L512.97 503C530.84 507.2 557.66 532.66 573.6 525.04C588.32 518 564.83 472.89 572.73 454.2C580.45 435.94 613.09 411.6 616.85 398.28C609.03 392.81 549.26 396.32 535.27 388.73C516.45 378.54 501.98 333.75 487.58 330.02C478.02 349.93 469.87 392.56 461.75 407.06L460.56 407.7C445.07 415.86 415.74 416.73 406.94 426.75C404.86 434.09 412.15 437.2 417.42 440.74C434.26 452.06 457.18 462.35 451.5 487C447.33 508.53 441.15 523.34 439.62 545.562C452.93 536.14 496.09 506.4 511.71 502.71ZM439.51 563.455C431.19 577.575 417.94 620.795 410.07 639.345C416.27 635.855 434.99 624.255 441.7 625.415C451.46 627.105 455.78 652.875 463.28 654.735C467.42 651.835 469.82 637.735 471.57 632.225L487.18 582.635C489.68 574.525 497.67 552.542 499.02 545.822C501.94 541.112 508.81 536.69 511.9 540.882C522.7 555.572 531.27 590.185 537.11 605.965C542.09 619.235 547.44 632.355 553.16 645.315C559.99 625.515 562.85 614.635 586.24 623.635L608.41 632.385C595.69 605.275 577.14 574.725 570.08 545.342C556.18 543.382 555.69 542.772 543.31 537.68C534.72 534.16 517.93 521.09 511.76 520.55C488.86 531.61 462.18 553.062 439.51 563.455Z"/></svg>
+                <span data-watchlist-label="До Watchlist"  class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">До Watchlist</span>
               </button>
             </div>
 

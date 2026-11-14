@@ -23,6 +23,7 @@
   const resultTitle = results.querySelector('h2');
   const cards = Array.from(results.querySelectorAll('article'), card => ({
     poster: card.querySelector('img'),
+    swatches: card.querySelectorAll('[data-swatch]'),
     title: card.querySelector('h3'),
     description: card.querySelector('p'),
     link: card.querySelector('a')
@@ -33,61 +34,73 @@
 
   const films = {
     "bottle-rocket": {
+      "palette": ["#F2C849","#9C1E14","#DEE0DB","#91A1A8","#457C6B"],
       "title": "Пляшкова ракета",
       "description": "Друзі планують пограбування й шукають власне місце у світі.",
       "poster": "assets/images/bottle-rocket.jpg"
     },
     "rushmore": {
+      "palette": ["#C49A6C","#5D6B7B","#D9A01F","#1A2633","#F3EBDD"],
       "title": "Академія Рашмор",
       "description": "Амбітний школяр, театр і дружба, що раптом стає суперництвом.",
       "poster": "assets/images/rushmore.jpg"
     },
     "royal-tenenbaums": {
+      "palette": ["#C51A1A","#E7C7C1","#B3C9E0","#A36A2F","#2C3A52"],
       "title": "Сімейка Тененбаумів",
       "description": "Троє колишніх вундеркіндів повертаються додому. Родинний портрет із тріщинами.",
       "poster": "assets/images/royal-tenenbaums.jpg"
     },
     "life-aquatic": {
+      "palette": ["#F2DB40","#D31915","#A5D3E3","#1675AC","#DFB78E"],
       "title": "Водне життя",
       "description": "Капітан Стів Зіссу збирає команду для останньої великої експедиції.",
       "poster": "assets/images/life-aquatic.jpg"
     },
     "darjeeling-limited": {
+      "palette": ["#BFCFC4","#112836","#BABFB8","#454547","#8B3E16"],
       "title": "Поїзд до Дарджилінга",
       "description": "Три брати вирушають у подорож Індією, щоб знову почути одне одного.",
       "poster": "assets/images/darjeeling-limited.jpg"
     },
     "mister-fox": {
+      "palette": ["#D2691E","#D9A441","#A34727","#F4E3C1","#7B4F32"],
       "title": "Фантастичний містер Лис",
       "description": "Лис, родина й зухвалий план. Тепла осіння казка про свободу та відповідальність.",
       "poster": "assets/images/mister-fox.jpg"
     },
     "moonrise-kingdom": {
+      "palette": ["#2F3C7E","#8EB38B","#F3C1B3","#A9A94C","#76681A"],
       "title": "Королівство повного місяця",
       "description": "Втеча двох підлітків на острів. Колір тут працює як компас.",
       "poster": "assets/images/moonrise-kingdom.jpg"
     },
     "grand-budapest": {
+      "palette": ["#E47991","#596AAC","#C6CDF6","#7295CC","#CE2854"],
       "title": "Готель «Гранд Будапешт»",
       "description": "Історія консьєржа та його юного протеже. Симетрія у кожному кадрі, пастель як характер.",
       "poster": "assets/images/grand-budapest.jpg"
     },
     "isle-of-dogs": {
+      "palette": ["#C0C0C0","#B25D35","#E8D7BD","#44413D","#A23C32"],
       "title": "Острів собак",
       "description": "Хлопчик шукає пса. Японія у відтінках іржі та туману.",
       "poster": "assets/images/isle-of-dogs.jpg"
     },
     "french-dispatch": {
+      "palette": ["#892118","#EC9760","#4FBBBB","#351527","#88988B"],
       "title": "Французький вісник",
       "description": "Журнал прощається з редактором. Кожна стаття — окрема палітра.",
       "poster": "assets/images/french-dispatch.jpg"
     },
     "asteroid-city": {
+      "palette": ["#55D1BF","#FAAB22","#7B1200","#D4A27F","#C9A96C"],
       "title": "Місто астероїдів",
       "description": "Зустріч у пустелі змінює звичний порядок. Родина, наука й незвідане.",
       "poster": "assets/images/asteroid-city.jpg"
     },
     "phoenician-scheme": {
+      "palette": ["#DDE9D6","#7339C1","#664432","#EE2813","#497572"],
       "title": "Фінікійська схема",
       "description": "Ексцентричний підприємець залучає доньку до заплутаного сімейного плану.",
       "poster": "assets/images/phoenician-scheme.jpg"
@@ -194,6 +207,13 @@
       const { slug } = rankings[index];
       const film = films[slug];
       card.poster.src = film.poster;
+      card.swatches.forEach((swatch, index) => {
+        const hex = film.palette[index];
+        swatch.style.backgroundColor = hex;
+        swatch.dataset.copyHex = hex;
+        swatch.title = 'Скопіювати ' + hex;
+        swatch.setAttribute('aria-label', 'Скопіювати колір ' + hex);
+      });
       card.poster.alt = `Постер фільму «${film.title.replace(/^«|»$/g, '')}»`;
       card.title.textContent = film.title;
       card.description.textContent = film.description;

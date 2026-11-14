@@ -29,6 +29,8 @@
       filter: invert(32%) sepia(98%) saturate(1200%) hue-rotate(90deg) brightness(95%) contrast(105%);
     }
   </style>
+  <script src="assets/js/watchlist.js" defer></script>
+  <script src="assets/js/palette-copy.js" defer></script>
 </head>
 <body class="bg-[#FDFBF7] text-[#32331E] min-h-screen flex flex-col antialiased">
 
@@ -103,285 +105,63 @@
     <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16" aria-labelledby="saved-movies-title">
       
       <!-- ЛІЧИЛЬНИК ЗБЕРЕЖЕНИХ ФІЛЬМІВ -->
-      <h2 id="saved-movies-title" class="font-bold text-lg md:text-xl text-[#32331E] mb-8">
-        <span id="saved-count">6</span> збережених фільмів
-      </h2>
+      <div data-watchlist-counts hidden class="flex flex-wrap items-center justify-between gap-3 mb-8 font-bold text-lg md:text-xl text-[#32331E]">
+        <p>Переглянутих фільмів: <span id="watched-count">0</span></p>
+        <h2 id="saved-movies-title">Збережених фільмів: <span id="saved-count">0</span></h2>
+      </div>
 
+      <div id="watchlist-filters" class="mb-6" aria-label="Фільтри Watchlist" hidden>
+        <div class="flex flex-wrap gap-3">
+          <button type="button" data-filter="all" aria-pressed="false" class="px-4 py-2 bg-white aria-pressed:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro font-bold">Усі</button>
+          <button type="button" data-filter="saved" aria-pressed="false" class="px-4 py-2 bg-white aria-pressed:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro font-bold">До перегляду</button>
+          <button type="button" data-filter="watched" aria-pressed="false" class="px-4 py-2 bg-white aria-pressed:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro font-bold">Переглянуті</button>
+        </div>
+      </div>
       <!-- СІТКА КАРТОК -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch mb-12">
-
-        <!-- Картка 1: Готель «Гранд Будапешт» -->
+      <div id="watchlist-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch mb-12" hidden></div>
+      <template id="watchlist-card">
         <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
           <div class="relative w-full">
-            <img src="assets/images/grand-budapest.jpg" alt="Ілюстрація Готель Гранд Будапешт" class="w-full h-[380px] object-cover object-[center_10%]" loading="lazy">
+            <img alt="" class="w-full h-[380px] object-cover object-[center_10%]" loading="lazy">
             <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]">
-              <button type="button" class="flex-1 h-full bg-[#E47991] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#596AAC] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#C6CDF6] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#7295CC] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#CE2854] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
+              <button type="button" data-swatch class="flex-1 h-full cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10"></button>
+              <button type="button" data-swatch class="flex-1 h-full cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10"></button>
+              <button type="button" data-swatch class="flex-1 h-full cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10"></button>
+              <button type="button" data-swatch class="flex-1 h-full cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10"></button>
+              <button type="button" data-swatch class="flex-1 h-full cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10"></button>
             </div>
           </div>
 
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            КОМЕДІЯ / ДРАМА
-          </span>
+          <span data-genre class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center"></span>
 
           <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Готель «Гранд Будапешт»</h3>
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Історія консьєржа та його юного протеже. Симетрія у кожному кадрі, пастель як характер.</p>
+            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center"></h3>
+            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1"></p>
             
             <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2014 • 99 хв</span>
+              <span data-meta class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block"></span>
             </div>
 
             <!-- БЛОК КНОПОК (ЗІРКА 60px, ГАЛОЧКА 45px) -->
             <div class="h-[60px] flex items-center justify-center gap-3 my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">Збережено</span>
+              <button type="button" data-remove class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
+                <svg class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow watchlist-original-icon" viewBox="0 0 1009 1002" aria-hidden="true"><path class="watchlist-icon-fill" fill="transparent" d="M486.16 310.85C516.53 314.23 521.83 359.06 543.79 373.22C559.63 383.44 627.4 367.92 633.21 392.03C638.77 415.06 599.53 440 588.77 460.72L588.11 462.03C589.43 491.93 608.96 518.2 583.68 542.692C592.14 572.775 608.34 600.475 623.9 627.205C628.18 634.565 640.81 651.335 633.61 658.455C627.08 660.375 611.59 651.355 604.98 648.425C594.19 643.635 583.22 639.285 572.09 635.375C570.12 643.355 568.1 651.315 566.01 659.265C564.65 664.275 562.85 672.085 558.28 674.685C540.16 675.115 515.96 591.905 511.07 576.915C510.38 574.195 509.59 570.785 507.2 569.475C497.92 581.385 476.87 690.545 461.4 688.815C455.07 684.065 441.14 651.385 436.71 641.865C427.52 648.055 400.92 666.105 391.21 667.925C387.5 666.895 389.08 667.815 386.36 664.965C385.76 662.705 385.85 660.635 386.77 658.455C400.61 625.905 411.68 589.805 427.37 558.292C427.27 558.012 427.16 557.742 427.06 557.472L426.58 556.102C415.62 525.64 436.37 500.55 434.86 476.34C427.23 462.42 386.99 445.71 383.52 430.51C378.77 409.69 434.12 397.99 449.85 393.52C452.1 379.31 457.91 363.08 462.09 349.04C466.22 335.15 470.54 315.14 486.16 310.85Z"/><path fill="#111" d="M486.16 310.85C516.53 314.23 521.83 359.06 543.79 373.22C559.63 383.44 627.4 367.92 633.21 392.03C638.77 415.06 599.53 440 588.77 460.72L588.11 462.03C589.43 491.93 608.96 518.2 583.68 542.692C592.14 572.775 608.34 600.475 623.9 627.205C628.18 634.565 640.81 651.335 633.61 658.455C627.08 660.375 611.59 651.355 604.98 648.425C594.19 643.635 583.22 639.285 572.09 635.375C570.12 643.355 568.1 651.315 566.01 659.265C564.65 664.275 562.85 672.085 558.28 674.685C540.16 675.115 515.96 591.905 511.07 576.915C510.38 574.195 509.59 570.785 507.2 569.475C497.92 581.385 476.87 690.545 461.4 688.815C455.07 684.065 441.14 651.385 436.71 641.865C427.52 648.055 400.92 666.105 391.21 667.925C387.5 666.895 389.08 667.815 386.36 664.965C385.76 662.705 385.85 660.635 386.77 658.455C400.61 625.905 411.68 589.805 427.37 558.292C427.27 558.012 427.16 557.742 427.06 557.472L426.58 556.102C415.62 525.64 436.37 500.55 434.86 476.34C427.23 462.42 386.99 445.71 383.52 430.51C378.77 409.69 434.12 397.99 449.85 393.52C452.1 379.31 457.91 363.08 462.09 349.04C466.22 335.15 470.54 315.14 486.16 310.85ZM511.71 502.71L512.97 503C530.84 507.2 557.66 532.66 573.6 525.04C588.32 518 564.83 472.89 572.73 454.2C580.45 435.94 613.09 411.6 616.85 398.28C609.03 392.81 549.26 396.32 535.27 388.73C516.45 378.54 501.98 333.75 487.58 330.02C478.02 349.93 469.87 392.56 461.75 407.06L460.56 407.7C445.07 415.86 415.74 416.73 406.94 426.75C404.86 434.09 412.15 437.2 417.42 440.74C434.26 452.06 457.18 462.35 451.5 487C447.33 508.53 441.15 523.34 439.62 545.562C452.93 536.14 496.09 506.4 511.71 502.71ZM439.51 563.455C431.19 577.575 417.94 620.795 410.07 639.345C416.27 635.855 434.99 624.255 441.7 625.415C451.46 627.105 455.78 652.875 463.28 654.735C467.42 651.835 469.82 637.735 471.57 632.225L487.18 582.635C489.68 574.525 497.67 552.542 499.02 545.822C501.94 541.112 508.81 536.69 511.9 540.882C522.7 555.572 531.27 590.185 537.11 605.965C542.09 619.235 547.44 632.355 553.16 645.315C559.99 625.515 562.85 614.635 586.24 623.635L608.41 632.385C595.69 605.275 577.14 574.725 570.08 545.342C556.18 543.382 555.69 542.772 543.31 537.68C534.72 534.16 517.93 521.09 511.76 520.55C488.86 531.61 462.18 553.062 439.51 563.455Z"/></svg>
+                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">Видалити</span>
               </button>
 
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-check.svg" alt="" class="w-[45px] h-[45px] object-contain transition-all group-hover:scale-110 group-hover:-rotate-12 icon-check-green-hover" aria-hidden="true">
+              <button type="button" data-watched aria-pressed="false" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
+                <svg class="w-[45px] h-[45px] object-contain transition-all group-hover:scale-110 group-hover:-rotate-12 icon-check-green-hover watchlist-original-icon" viewBox="0 0 1024 1024" aria-hidden="true"><path class="watchlist-icon-fill" fill="transparent" d="M677.601 268.195C678.633 268.023 681.437 267.951 682.583 267.964C690.164 268.108 697.629 269.858 704.485 273.097C725.91 283.059 755.84 312.415 773.149 328.936C781.363 336.777 786.467 346.327 786.064 357.899C785.903 375.587 774.247 385.697 763.339 397.834C716.709 449.714 665.154 497.203 622.074 552.22L553.305 640.637C533.587 665.792 512.78 690.588 494.777 716.994C489.632 724.764 484.849 732.875 479.346 740.373C457.716 769.84 434.177 753.684 416.923 730.204C401.664 709.439 382.613 689.869 364.814 671.568C355.06 661.405 345.388 651.163 335.799 640.843C309.532 613.031 284.518 582.755 258.62 554.488C253.296 548.678 247.154 541.919 243.094 535.199C239.625 529.447 237.867 522.826 238.025 516.111C238.668 493.438 265.409 476.868 280.605 462.58C290.669 453.116 305.727 438.429 317.392 432.028C347.407 417.148 366.511 438.536 381.148 461.614C400.878 492.722 424.471 526.564 448.748 553.43C487.681 490.715 530.243 423.261 575.629 365.251C589.268 347.616 603.438 330.398 618.12 313.621C634.503 294.647 651.201 271.423 677.601 268.195Z"/><path fill="#111" d="M677.601 268.195C678.633 268.023 681.437 267.951 682.583 267.964C690.164 268.108 697.629 269.858 704.485 273.097C725.91 283.059 755.84 312.415 773.149 328.936C781.363 336.777 786.467 346.327 786.064 357.899C785.903 375.587 774.247 385.697 763.339 397.834C716.709 449.714 665.154 497.203 622.074 552.22L553.305 640.637C533.587 665.792 512.78 690.588 494.777 716.994C489.632 724.764 484.849 732.875 479.346 740.373C457.716 769.84 434.177 753.684 416.923 730.204C401.664 709.439 382.613 689.869 364.814 671.568C355.06 661.405 345.388 651.163 335.799 640.843C309.532 613.031 284.518 582.755 258.62 554.488C253.296 548.678 247.154 541.919 243.094 535.199C239.625 529.447 237.867 522.826 238.025 516.111C238.668 493.438 265.409 476.868 280.605 462.58C290.669 453.116 305.727 438.429 317.392 432.028C347.407 417.148 366.511 438.536 381.148 461.614C400.878 492.722 424.471 526.564 448.748 553.43C487.681 490.715 530.243 423.261 575.629 365.251C589.268 347.616 603.438 330.398 618.12 313.621C634.503 294.647 651.201 271.423 677.601 268.195ZM338.628 625.753C348.595 636.664 358.507 648.138 368.771 658.728C380.999 671.344 392.718 682.971 404.477 696.103C410.826 703.167 417.022 710.366 423.062 717.697C448.409 748.526 456.835 756.657 479.975 716.989C486.866 705.176 496.966 692.407 505.513 681.7C532.285 650.009 556.58 616.322 582.069 583.652C596.255 565.51 610.608 547.5 625.127 529.623C666.309 479.327 713.806 435.91 757.081 387.304C772.618 369.853 783.515 356.015 762.112 335.406C743.557 318.701 706.898 278.809 681.514 279.712C676.506 280.217 670.06 281.604 665.804 284.277C645.627 296.945 625.172 322.391 610.267 340.647C590.872 364.342 572.21 388.629 554.308 413.472C523.56 456.673 497.168 502.646 465.307 545.038C455.748 557.756 450.121 570.076 435.108 554.767C427.67 547.183 421.181 539.224 414.687 530.809C403.756 517.107 393.478 503.383 383.98 488.642C374.982 475.097 367.391 460.347 355.802 448.74C346.131 439.053 333.797 435.517 321.742 443.684C309.699 451.844 299.269 462.571 288.266 472.077C278.622 480.409 268.516 488.271 259.687 497.427C250.235 507.454 246.127 518.394 254.813 530.612C263.622 543.002 274.285 553.369 284.147 564.887C301.912 585.693 319.975 605.766 338.628 625.753Z"/><path fill="#111" d="M680.557 291.667C681.976 291.534 683.403 291.502 684.827 291.574C707.569 292.538 733.505 320.956 749.737 335.649C760.639 345.517 765.344 362.444 755.49 374.949C746.251 386.674 734.394 396.371 723.311 406.621C712.613 416.582 702.209 426.854 692.113 437.426C632.47 499.335 583.479 565.211 532.374 633.794L488.813 692.598C480.246 704.357 466.4 732.311 448.908 730.491C437.949 729.35 424.73 714.674 416.997 706.623C404.862 693.988 393.216 680.892 382.086 667.363C366.885 649.43 351.896 631.319 337.122 613.033C323.735 596.298 309.87 579.95 295.546 564.009C276.918 543.407 248.006 522.731 277.037 494.452C290.404 481.583 304.263 469.326 318.683 457.653C338.677 441.468 353.933 455.862 366.418 472.304C391.918 505.889 413.22 542.425 442.273 573.233C443.577 574.616 447.065 578.221 449.578 577.771C455.162 575.354 459.518 566.542 463.317 561.83C477.113 540.018 490.51 518.249 504.782 496.742C534.083 452.774 565.01 409.913 597.499 368.246C609.488 352.853 622.841 337.596 635.769 322.951C647.82 309.301 661.645 294.015 680.557 291.667ZM339.099 600.731C353.882 618.387 434.541 719.579 449.87 720.829C453.522 721.127 457.225 718.927 459.778 716.527C466.968 709.77 475.314 695.988 481.65 687.505L546.798 598.673C589.718 539.498 636.359 483.114 686.439 429.863C701.057 414.174 717.535 398.902 733.41 384.169C751.459 367.689 760.283 358.823 739.233 339.008C734.194 334.264 727.925 328.114 722.303 323.48C709.19 312.671 697.989 300.088 679.717 301.568C647.059 309.899 601.449 376.856 581.297 404.605C553.949 442.163 527.601 480.438 502.281 519.392C493.043 533.753 469.574 576.149 457.545 585.005C452.861 588.455 447.739 588.546 442.798 585.575C435.919 581.437 429.837 573.311 424.664 567.192C410.588 550.544 398.097 533.315 385.794 515.338C374.939 499.478 361.963 478.619 348.601 465.393C345.431 462.255 339.939 457.31 335.143 458.459C325.524 460.764 282.59 499.937 277.308 509.265C275.371 512.687 273.561 517.594 274.664 521.558C275.841 525.785 278.677 529.995 281.304 533.461C289.215 543.902 299.179 553.397 307.93 563.197C318.738 575.299 328.898 588.113 339.099 600.731Z"/></svg>
                 <span class="text-[#32331E] group-hover:text-[#008001] transition-colors">Переглянуто</span>
               </button>
             </div>
 
-            <a href="grand-budapest.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
+            <a class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
+              Детальніше
             </a>
           </div>
         </article>
-
-        <!-- Картка 2: Королівство повного місяця -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
-          <div class="relative w-full">
-            <img src="assets/images/moonrise-kingdom.jpg" alt="Ілюстрація Королівство повного місяця" class="w-full h-[380px] object-cover object-[center_50%]" loading="lazy">
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]">
-              <button type="button" class="flex-1 h-full bg-[#2F3C7E] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#8EB38B] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#F3C1B3] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#A9A94C] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#76681A] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
-          </div>
-
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            МЕЛОДРАМА / ПРИГОДИ
-          </span>
-
-          <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Королівство повного місяця</h3>
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Втеча двох підлітків на острів. Колір тут працює як компас.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2012 • 94 хв</span>
-            </div>
-
-            <!-- БЛОК КНОПОК -->
-            <div class="h-[60px] flex items-center justify-center gap-3 my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">Збережено</span>
-              </button>
-
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-check.svg" alt="" class="w-[45px] h-[45px] object-contain transition-all group-hover:scale-110 group-hover:-rotate-12 icon-check-green-hover" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#008001] transition-colors">Переглянуто</span>
-              </button>
-            </div>
-
-            <a href="moonrise-kingdom.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
-          </div>
-        </article>
-
-        <!-- Картка 3: Фантастичний містер Лис -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
-          <div class="relative w-full">
-            <img src="assets/images/mister-fox.jpg" alt="Ілюстрація Фантастичний містер Лис" class="w-full h-[380px] object-cover object-[center_37%]" loading="lazy">
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]">
-              <button type="button" class="flex-1 h-full bg-[#D2691E] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#D9A441] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#A34727] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#F4E3C1] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#7B4F32] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
-          </div>
-
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            АНІМАЦІЯ / КОМЕДІЯ
-          </span>
-
-          <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Фантастичний містер Лис</h3>
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Лис, родина й зухвалий план. Тепла осіння казка про свободу та відповідальність.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2009 • 87 хв</span>
-            </div>
-
-            <!-- БЛОК КНОПОК -->
-            <div class="h-[60px] flex items-center justify-center gap-3 my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">Збережено</span>
-              </button>
-
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-check.svg" alt="" class="w-[45px] h-[45px] object-contain transition-all group-hover:scale-110 group-hover:-rotate-12 icon-check-green-hover" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#008001] transition-colors">Переглянуто</span>
-              </button>
-            </div>
-
-            <a href="mister-fox.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
-          </div>
-        </article>
-
-        <!-- Картка 4: Острів собак -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
-          <div class="relative w-full">
-            <img src="assets/images/isle-of-dogs.jpg" alt="Ілюстрація Острів собак" class="w-full h-[380px] object-cover object-[center_15%]" loading="lazy">
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]">
-              <button type="button" class="flex-1 h-full bg-[#C0C0C0] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#B25D35] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#E8D7BD] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#44413D] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#A23C32] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
-          </div>
-
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            АНІМАЦІЯ / ПРИГОДИ
-          </span>
-
-          <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Острів собак</h3>
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Хлопчик шукає пса. Японія у відтінках іржі та туману.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2018 • 101 хв</span>
-            </div>
-
-            <!-- БЛОК КНОПОК -->
-            <div class="h-[60px] flex items-center justify-center gap-3 my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">Збережено</span>
-              </button>
-
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-check.svg" alt="" class="w-[45px] h-[45px] object-contain transition-all group-hover:scale-110 group-hover:-rotate-12 icon-check-green-hover" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#008001] transition-colors">Переглянуто</span>
-              </button>
-            </div>
-
-            <a href="isle-of-dogs.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
-          </div>
-        </article>
-
-        <!-- Картка 5: Французький вісник -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
-          <div class="relative w-full">
-            <img src="assets/images/french-dispatch.jpg" alt="Ілюстрація Французький вісник" class="w-full h-[380px] object-cover object-[center_10%]" loading="lazy">
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]">
-              <button type="button" class="flex-1 h-full bg-[#892118] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#EC9760] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#4FBBBB] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#351527] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#88988B] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
-          </div>
-
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            КОМЕДІЯ / ДРАМА
-          </span>
-
-          <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Французький вісник</h3>
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Журнал прощається з редактором. Кожна стаття — окрема палітра.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2021 • 108 хв</span>
-            </div>
-
-            <!-- БЛОК КНОПОК -->
-            <div class="h-[60px] flex items-center justify-center gap-3 my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">Збережено</span>
-              </button>
-
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-check.svg" alt="" class="w-[45px] h-[45px] object-contain transition-all group-hover:scale-110 group-hover:-rotate-12 icon-check-green-hover" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#008001] transition-colors">Переглянуто</span>
-              </button>
-            </div>
-
-            <a href="french-dispatch.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
-          </div>
-        </article>
-
-        <!-- Картка 6: Місто астероїдів -->
-        <article class="bg-white border-2 border-[#32331E] rounded-lg shadow-retro flex flex-col overflow-hidden h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-retro-hover">
-          <div class="relative w-full">
-            <img src="assets/images/asteroid-city.jpg" alt="Ілюстрація Місто астероїдів" class="w-full h-[380px] object-cover object-[center_15%]" loading="lazy">
-            <div class="flex w-full h-[14px] border-t border-b-2 border-[#32331E]">
-              <button type="button" class="flex-1 h-full bg-[#55D1BF] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 1"></button>
-              <button type="button" class="flex-1 h-full bg-[#FAAB22] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 2"></button>
-              <button type="button" class="flex-1 h-full bg-[#7B1200] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 3"></button>
-              <button type="button" class="flex-1 h-full bg-[#D4A27F] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 4"></button>
-              <button type="button" class="flex-1 h-full bg-[#C9A96C] border-none cursor-pointer hover:outline hover:outline-2 hover:outline-[#32331E] hover:z-10 transition-all" aria-label="Колір 5"></button>
-            </div>
-          </div>
-
-          <span class="w-[90%] ml-auto my-3 bg-[#CFAA13] text-[#32331E] border-2 border-r-0 border-[#32331E] rounded-l-md px-3 py-1 text-[11px] font-extrabold tracking-wider uppercase text-center">
-            КОМЕДІЯ / ФАНТАСТИКА
-          </span>
-
-          <div class="p-4 flex flex-col items-center text-center flex-grow justify-between">
-            <h3 class="font-heading text-xl md:text-2xl h-[56px] flex items-center justify-center">Місто астероїдів</h3>
-            <p class="text-xs lg:text-sm h-[64px] flex items-start justify-center leading-snug my-1">Зустріч у пустелі змінює звичний порядок. Родина, наука й незвідане.</p>
-            
-            <div class="h-[28px] flex items-center justify-center mb-1">
-              <span class="border-1.5 border-[#32331E] rounded-full px-3 py-0.5 text-xs font-bold inline-block">2023 • 105 хв</span>
-            </div>
-
-            <!-- БЛОК КНОПОК -->
-            <div class="h-[60px] flex items-center justify-center gap-3 my-1">
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-star.svg" alt="" class="w-[60px] h-[60px] object-contain transition-all group-hover:scale-110 group-hover:rotate-12 star-icon-yellow" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#CFAA13] transition-colors">Збережено</span>
-              </button>
-
-              <button type="button" class="group bg-transparent border-none text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors p-0">
-                <img src="assets/icons/icon-check.svg" alt="" class="w-[45px] h-[45px] object-contain transition-all group-hover:scale-110 group-hover:-rotate-12 icon-check-green-hover" aria-hidden="true">
-                <span class="text-[#32331E] group-hover:text-[#008001] transition-colors">Переглянуто</span>
-              </button>
-            </div>
-
-            <a href="asteroid-city.html" class="w-full h-[42px] inline-flex items-center justify-center bg-[#FDFBF7] hover:bg-[#CFAA13] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover text-sm font-bold transition-all mt-auto">
-              Переглянути
-            </a>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- КНОПКА "ВСІ ФІЛЬМИ" -->
-      <div class="flex justify-center">
-        <button type="button" disabled class="w-[180px] h-[44px] inline-flex items-center justify-center bg-white text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro font-bold text-sm opacity-60 cursor-not-allowed hover:border-red-500 hover:text-red-500 transition-colors">
-          Всі фільми
-        </button>
-      </div>
+      </template>
+      <p id="watchlist-empty" class="text-center font-semibold" tabindex="-1" hidden>Твій Watchlist поки порожній. Обери фільм у каталозі та додай його до списку.</p>
 
     </section>
 
@@ -396,7 +176,7 @@
           Колекція тільки починається
         </h2>
         <p class="text-xs md:text-sm font-semibold text-[#32331E] leading-relaxed text-center mb-6 max-w-xl">
-          Шість історій уже з вами. Додайте стрічки з каталогу, щоб розширити власну колекцію кольорів та настроїв.
+          Додайте стрічки з каталогу, щоб розширити власну колекцію кольорів та настроїв.
         </p>
         <a href="filmography.html" class="w-[180px] h-[44px] inline-flex items-center justify-center bg-[#CFAA13] text-[#32331E] border-2 border-[#32331E] rounded-md shadow-retro shadow-retro-hover font-bold text-sm transition-all">
           Фільмографія
