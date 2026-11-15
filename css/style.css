@@ -2,8 +2,6 @@
    THE WES ANDERSON WORLD — STYLES & LAB 7 INTERACTIONS
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pattaya&display=swap');
-
 :root {
   --font-heading: 'Pattaya', cursive;
   --font-primary: 'Nunito', sans-serif;
