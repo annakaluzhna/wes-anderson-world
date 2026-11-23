@@ -445,3 +445,15 @@ html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="movie-tit
 html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="promo-title"] :is(button[data-watchlist-id], a[href="mood-quiz.html"]) { background-color: var(--film-action); color: var(--film-action-text); }
 html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="movie-title"] a[href="#trailer-section"]:hover,
 html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="promo-title"] :is(button[data-watchlist-id], a[href="mood-quiz.html"]):hover { background-color: var(--film-hover); color: var(--film-hover-text); }
+
+@media (max-width: 1023px) {
+  .site-header .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #FDFBF7;
+  }
+  .site-header:has(#burger-toggle:checked) { transform: none; }
+  html[data-theme="dark"] .site-header .main-nav { background-color: #24251A; }
+}

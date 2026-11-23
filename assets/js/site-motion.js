@@ -22,9 +22,9 @@
   function reveal(element, delay = 0, opacity = 0) {
     if (!element || preference.matches) return;
     const animation = element.animate([
-      { opacity, transform: 'translateY(12px)' },
+      { opacity, transform: 'translateY(36px)' },
       { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: 380, delay, easing: 'ease-out', fill: 'backwards' });
+    ], { duration: 520, delay, easing: 'ease-out', fill: 'backwards' });
     running.add(animation);
     animation.onfinish = animation.oncancel = () => running.delete(animation);
   }
