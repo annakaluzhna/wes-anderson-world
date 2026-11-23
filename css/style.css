@@ -146,3 +146,302 @@ body {
   line-height: 1;
   pointer-events: none;
 }
+
+/* Вечірній ліс та кабінет режисера */
+.theme-toggle .theme-sun { display: none; }
+html[data-theme="dark"] .theme-moon { display: none; }
+html[data-theme="dark"] .theme-sun { display: block; }
+html[data-theme="dark"] { color-scheme: dark; background: #191A12; color: #BBB9AB; }
+html[data-theme="dark"] body { background-color: #191A12; color: #BBB9AB; }
+html[data-theme="dark"] :is(header.site-header, footer, dialog, .watchlist-badge) { background-color: #24251A; color: #BBB9AB; }
+html[data-theme="dark"] :is([class~="bg-white"], [class~="bg-[#FDFBF7]"]):not([data-copy-hex], [data-color], [data-swatch], .watchlist-icon-fill) { background-color: #24251A; }
+html[data-theme="dark"] :is([class~="bg-[#EDB9B9]"], [class~="bg-[#F7D6D0]"]):not([data-copy-hex], [data-color], [data-swatch], .watchlist-icon-fill) { background-color: #472E2E; }
+html[data-theme="dark"] [class~="bg-[#C0DFDB]"]:not([data-copy-hex], [data-color], [data-swatch], .watchlist-icon-fill) { background-color: #243B37; }
+html[data-theme="dark"] [class*="text-[#32331E]"] { color: #BBB9AB; }
+html[data-theme="dark"] :is([class*="border-[#32331E]"], .watchlist-badge) { border-color: #8E8C73; }
+html[data-theme="dark"] .shadow-retro { box-shadow: 3px 3px 0 #8E8C73; }
+html[data-theme="dark"] .shadow-retro-hover:hover { box-shadow: 4px 4px 0 #8E8C73; }
+html[data-theme="dark"] :is(a, button, span)[class~="bg-[#CFAA13]"]:not([data-copy-hex], [data-color], [data-swatch], .watchlist-icon-fill) { background-color: #CFAA13; color: #191A12; }
+html[data-theme="dark"] :is(a, button)[class~="hover:bg-[#CFAA13]"]:hover:not([data-copy-hex], [data-color], [data-swatch], .watchlist-icon-fill),
+html[data-theme="dark"] button[data-all-colors][aria-pressed="true"] { background-color: #CFAA13; color: #191A12; }
+html[data-theme="dark"] input, html[data-theme="dark"] select, html[data-theme="dark"] textarea { color: #BBB9AB; }
+html[data-theme="dark"] :is(input, textarea)::placeholder { color: #BCAAAE; opacity: 1; }
+html[data-theme="dark"] :is(.text-red-700, .text-red-800) { color: #FFB4A7; }
+html[data-theme="dark"] label[for="burger-toggle"] > span:not(.sr-only) { background-color: #8E8C73; }
+
+html[data-theme="dark"] body[class] { background-color: #191A12; }
+
+/* Іконки нічного сеансу */
+html[data-theme="dark"] img[src^="assets/icons/"] {
+  filter: brightness(0) saturate(100%) invert(76%) sepia(9%) saturate(363%) hue-rotate(12deg) brightness(96%) contrast(89%);
+}
+html[data-theme="dark"] .watchlist-original-icon {
+  filter: none;
+}
+html[data-theme="dark"] .watchlist-original-icon path:not(.watchlist-icon-fill) {
+  fill: #BBB9AB;
+}
+html[data-theme="dark"] :is(header, footer, main) svg:not(.watchlist-original-icon) {
+  color: #BBB9AB;
+}
+
+html[data-theme="dark"] section[aria-labelledby="hero-title"] :is(h1, p) {
+  color: #32331E;
+}
+
+html[data-theme="dark"] .site-header a[href="watchlist.html"] {
+  color: #32331E;
+}
+html[data-theme="dark"] .site-header a[href="watchlist.html"] > img {
+  filter: brightness(0);
+}
+.site-header a[href="watchlist.html"] > span:not([data-watchlist-badge]) {
+  color: #32331E;
+}
+
+html[data-theme="dark"] button[data-copy-hex]:empty:hover,
+html[data-theme="dark"] button[data-swatch]:hover {
+  outline: 2px solid #111;
+  outline-offset: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Наведення на ще не збережений фільм у нічній темі. */
+html[data-theme="dark"] button[data-watchlist-id][aria-pressed="false"]:hover > [data-watchlist-label] {
+  color: #CFAA13;
+}
+html[data-theme="dark"] button[data-watchlist-id][aria-pressed="false"]:hover > .watchlist-original-icon path:not(.watchlist-icon-fill) {
+  fill: #CFAA13;
+}
+
+html[data-theme="dark"] button[data-watchlist-id][aria-pressed="false"]:hover > .watchlist-original-icon {
+  filter: none;
+}
+
+html[data-theme="dark"] :is(button[data-watchlist-id][aria-pressed="true"], button[data-remove][aria-pressed="true"]) > .watchlist-original-icon path:not(.watchlist-icon-fill) {
+  fill: #806414;
+}
+
+html[data-theme="dark"] [class~="text-white"] {
+  color: #BBB9AB;
+}
+
+html[data-theme="dark"] .quiz-option-label:has(input:checked),
+html[data-theme="dark"] .quiz-option-label:has(input:checked) > span {
+  color: #32331E;
+}
+
+html[data-theme="dark"] #feedbackForm :is(input:not([type="checkbox"]):not([type="hidden"]), textarea) {
+  border: 2px solid #8E8C73;
+  background-color: #24251A;
+}
+html[data-theme="dark"] #feedbackForm :is(input:not([type="checkbox"]):not([type="hidden"]), textarea):hover {
+  border-color: #CFAA13;
+  background-color: #303123;
+  outline: 1px solid #CFAA13;
+  outline-offset: 1px;
+}
+html[data-theme="dark"] #feedbackForm :is(input:not([type="checkbox"]), textarea):focus {
+  border-color: #CFAA13;
+  outline: 2px solid #CFAA13;
+  outline-offset: 2px;
+}
+html[data-theme="dark"] #feedbackForm :is(input, textarea)[aria-invalid="true"] {
+  border-color: #FFB4A7;
+}
+html[data-theme="dark"] #feedbackForm :is(input, textarea).border-green-700 {
+  border-color: #91B88A;
+}
+
+html[data-theme="dark"] footer img[src="assets/icons/logo-footer.svg"] {
+  filter: brightness(0);
+}
+
+html[data-theme="dark"] footer .footer-original-logo {
+  color: #000;
+}
+html[data-theme="dark"] footer .footer-original-logo .footer-logo-letter {
+  fill: #BBB9AB;
+}
+
+html[data-theme="dark"] [data-biography-quote],
+html[data-theme="dark"] [data-biography-quote] :is(h3, p, span) {
+  color: #32331E;
+}
+
+#mood-quiz-form .btn-prev:disabled:hover {
+  transform: none;
+  box-shadow: 2px 2px 0 #32331E;
+}
+html[data-theme="dark"] #mood-quiz-form .btn-prev:disabled:hover {
+  box-shadow: 3px 3px 0 #8E8C73;
+}
+
+button[data-watched][aria-pressed="true"]:hover > .watchlist-original-icon {
+  filter: none;
+}
+html[data-theme="dark"] button[data-watched][aria-pressed="true"] > .watchlist-original-icon path:not(.watchlist-icon-fill) {
+  fill: #005A01;
+}
+html[data-theme="dark"] button[data-watched][aria-pressed="false"]:hover > .watchlist-original-icon {
+  filter: none;
+}
+html[data-theme="dark"] button[data-watched][aria-pressed="false"]:hover > .watchlist-original-icon path:not(.watchlist-icon-fill) {
+  fill: #008001;
+}
+html[data-theme="dark"] button[data-watched][aria-pressed="false"]:hover > span {
+  color: #008001;
+}
+html[data-theme="dark"] table :is(th, td) {
+  background-color: #24251A;
+}
+html[data-theme="dark"] button[data-copy-hex][class~="bg-white"] {
+  background-color: #191A12;
+  color: #BBB9AB;
+}
+html[data-theme="dark"] button[data-copy-hex][class~="bg-white"] > .truncate {
+  color: #BBB9AB;
+}
+/* Індивідуальні нічні палітри сторінок фільмів. */
+html[data-theme="dark"] body[data-film-theme="bottle-rocket"] {
+  --film-hero: #5B3F3F;
+  --film-cta: #457C6B;
+  --film-text: #BBB9AB;
+  --film-details: #DEE0DB;
+  --film-details-text: #191A12;
+  --film-action: #9C1E14;
+  --film-action-text: #BBB9AB;
+  --film-hover: #F2C849;
+  --film-hover-text: #191A12;
+}
+html[data-theme="dark"] body[data-film-theme="rushmore"] {
+  --film-hero: #1A2633;
+  --film-cta: #592E2B;
+  --film-text: #BBB9AB;
+  --film-details: #F3EBDD;
+  --film-details-text: #1A2633;
+  --film-action: #C0502B;
+  --film-action-text: #BBB9AB;
+  --film-hover: #D9A01F;
+  --film-hover-text: #1A2633;
+}
+html[data-theme="dark"] body[data-film-theme="royal-tenenbaums"] {
+  --film-hero: #513B2A;
+  --film-cta: #2C3A52;
+  --film-text: #BBB9AB;
+  --film-details: #EDD7B3;
+  --film-details-text: #2C3A52;
+  --film-action: #C51A1A;
+  --film-action-text: #BBB9AB;
+  --film-hover: #CAA378;
+  --film-hover-text: #2C3A52;
+}
+html[data-theme="dark"] body[data-film-theme="life-aquatic"] {
+  --film-hero: #454B14;
+  --film-cta: #1675AC;
+  --film-text: #BBB9AB;
+  --film-details: #A5D3E3;
+  --film-details-text: #191A12;
+  --film-action: #D31915;
+  --film-action-text: #BBB9AB;
+  --film-hover: #F2DB40;
+  --film-hover-text: #191A12;
+}
+html[data-theme="dark"] body[data-film-theme="darjeeling-limited"] {
+  --film-hero: #112836;
+  --film-cta: #3B5459;
+  --film-text: #BBB9AB;
+  --film-details: #BFCFC4;
+  --film-details-text: #112836;
+  --film-action: #8B3E16;
+  --film-action-text: #BBB9AB;
+  --film-hover: #CA9722;
+  --film-hover-text: #112836;
+}
+html[data-theme="dark"] body[data-film-theme="mister-fox"] {
+  --film-hero: #7B4F32;
+  --film-cta: #6E7544;
+  --film-text: #BBB9AB;
+  --film-details: #F4E3C1;
+  --film-details-text: #3B3B3B;
+  --film-action: #9C2F1C;
+  --film-action-text: #BBB9AB;
+  --film-hover: #D9A441;
+  --film-hover-text: #3B3B3B;
+}
+html[data-theme="dark"] body[data-film-theme="moonrise-kingdom"] {
+  --film-hero: #76681A;
+  --film-cta: #2F3C7E;
+  --film-text: #BBB9AB;
+  --film-details: #F3C1B3;
+  --film-details-text: #191A12;
+  --film-action: #D40016;
+  --film-action-text: #BBB9AB;
+  --film-hover: #FACE32;
+  --film-hover-text: #191A12;
+}
+html[data-theme="dark"] body[data-film-theme="grand-budapest"] {
+  --film-hero: #A11F04;
+  --film-cta: #596AAC;
+  --film-text: #BBB9AB;
+  --film-details: #C6CDF6;
+  --film-details-text: #191A12;
+  --film-action: #CE2854;
+  --film-action-text: #BBB9AB;
+  --film-hover: #E47991;
+  --film-hover-text: #191A12;
+}
+html[data-theme="dark"] body[data-film-theme="isle-of-dogs"] {
+  --film-hero: #44413D;
+  --film-cta: #5A4E3C;
+  --film-text: #BBB9AB;
+  --film-details: #E8D7BD;
+  --film-details-text: #44413D;
+  --film-action: #A23C32;
+  --film-action-text: #BBB9AB;
+  --film-hover: #E9B84C;
+  --film-hover-text: #44413D;
+}
+html[data-theme="dark"] body[data-film-theme="french-dispatch"] {
+  --film-hero: #351527;
+  --film-cta: #1C2C43;
+  --film-text: #BBB9AB;
+  --film-details: #E2F0EA;
+  --film-details-text: #1C2C43;
+  --film-action: #892118;
+  --film-action-text: #BBB9AB;
+  --film-hover: #E1B84D;
+  --film-hover-text: #1C2C43;
+}
+html[data-theme="dark"] body[data-film-theme="asteroid-city"] {
+  --film-hero: #414636;
+  --film-cta: #7B1200;
+  --film-text: #BBB9AB;
+  --film-details: #D9C298;
+  --film-details-text: #414636;
+  --film-action: #E95333;
+  --film-action-text: #BBB9AB;
+  --film-hover: #55D1BF;
+  --film-hover-text: #191A12;
+}
+html[data-theme="dark"] body[data-film-theme="phoenician-scheme"] {
+  --film-hero: #664432;
+  --film-cta: #497572;
+  --film-text: #BBB9AB;
+  --film-details: #DDE9D6;
+  --film-details-text: #191A12;
+  --film-action: #7339C1;
+  --film-action-text: #BBB9AB;
+  --film-hover: #EE2813;
+  --film-hover-text: #BBB9AB;
+}
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="movie-title"] { background-color: var(--film-hero); }
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="promo-title"] article { background-color: var(--film-cta); }
+html[data-theme="dark"] body[data-film-theme] :is(section[aria-labelledby="movie-title"], section[aria-labelledby="promo-title"]) :is(h1, h2, h3, p) { color: var(--film-text); }
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="movie-title"] a[href="#info-section-title"] { background-color: var(--film-details); color: var(--film-details-text); }
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="movie-title"] a[href="#info-section-title"]:hover { background-color: var(--film-details); color: var(--film-details-text); }
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="movie-title"] a[href="#trailer-section"],
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="promo-title"] :is(button[data-watchlist-id], a[href="mood-quiz.html"]) { background-color: var(--film-action); color: var(--film-action-text); }
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="movie-title"] a[href="#trailer-section"]:hover,
+html[data-theme="dark"] body[data-film-theme] section[aria-labelledby="promo-title"] :is(button[data-watchlist-id], a[href="mood-quiz.html"]):hover { background-color: var(--film-hover); color: var(--film-hover-text); }
